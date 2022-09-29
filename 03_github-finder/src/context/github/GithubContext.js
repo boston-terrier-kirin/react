@@ -9,12 +9,13 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
+    user: {},
+    repos: [],
     loading: false,
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
-  // POINT：useCallback
   const searchUsers = useCallback(async (text) => {
     setLoading();
 
@@ -36,6 +37,52 @@ export const GithubProvider = ({ children }) => {
     });
   }, []);
 
+  // POINT：useCallback, useCallbackしないと、User.userEffectで無限ループしてしまう。
+  const getUser = useCallback(async (login) => {
+    setLoading();
+
+    const res = await fetch(`${GITHUB_URL}/users/${login}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    if (res.status === 404) {
+      // POINT：window.location でリダイレクト
+      window.location = '/not-found';
+      return;
+    }
+
+    const data = await res.json();
+
+    dispatch({
+      type: 'GET_USER',
+      payload: data,
+    });
+  }, []);
+
+  const getUserRepos = useCallback(async (login) => {
+    setLoading();
+
+    const params = new URLSearchParams({
+      sort: 'created',
+      per_page: 10,
+    });
+
+    const res = await fetch(`${GITHUB_URL}/users/${login}/repos?${params}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    const data = await res.json();
+
+    dispatch({
+      type: 'GET_REPOS',
+      payload: data,
+    });
+  }, []);
+
   const clearUsers = useCallback(() => {
     dispatch({
       type: 'CLEAR_USERS',
@@ -51,7 +98,11 @@ export const GithubProvider = ({ children }) => {
       value={{
         loading: state.loading,
         users: state.users,
+        user: state.user,
+        repos: state.repos,
         searchUsers,
+        getUser,
+        getUserRepos,
         clearUsers,
       }}
     >
