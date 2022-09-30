@@ -7,6 +7,7 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // POINT：useLocation
   const pathMatchRoute = (route) => {
     if (route === location.pathname) {
       return true;
