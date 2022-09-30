@@ -7,7 +7,7 @@ function UseMemoExample() {
 
   // numberが変わった時だけ、getSqrtが呼ばれる。
   const sqrt = useMemo(() => {
-    getSqrt(number);
+    return getSqrt(number);
   }, [number]);
 
   const onReRender = () => {

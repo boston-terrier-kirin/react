@@ -1,0 +1,28 @@
+{
+  "budgets": [
+    {
+      "id": "d9515ef1-d3a4-4cca-8a49-5bee476b5ea5",
+      "description": "4月分給料",
+      "value": "30002",
+      "isExpense": false
+    },
+    {
+      "description": "9月分給料",
+      "value": "50000",
+      "isExpense": false,
+      "id": "5a450bcd-6edd-4bbf-8256-0bde42921892"
+    },
+    {
+      "description": "ドッグフード",
+      "value": "15",
+      "isExpense": true,
+      "id": "9e71a82a-a21a-46b6-8db0-e517a4f4dd19"
+    },
+    {
+      "id": "ca7ebf9b-b1e7-41bb-988e-afe728a4ffde",
+      "description": "J:COM",
+      "value": "100",
+      "isExpense": true
+    }
+  ]
+}
