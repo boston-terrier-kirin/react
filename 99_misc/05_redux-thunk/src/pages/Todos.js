@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodo } from '../store/todo/todo.action';
-import { selectTodos } from '../store/todo/toto.selector';
+import { selectTodos, selectTodosCount } from '../store/todo/toto.selector';
 import Todo from './Todo';
 
 function Todos() {
@@ -9,6 +9,7 @@ function Todos() {
 
   const dispatch = useDispatch();
   const todos = useSelector(selectTodos);
+  const todosCount = useSelector(selectTodosCount);
 
   const onAdd = async () => {
     dispatch(getTodo(todoId));
@@ -19,6 +20,9 @@ function Todos() {
     <div className="container mt-3">
       <button className="btn btn-primary" onClick={onAdd}>
         Get Task
+        {todosCount > 0 && (
+          <span className="badge bg-primary">{todosCount}</span>
+        )}
       </button>
       <ul className="mt-3 ps-0">
         {todos?.map((todo) => (
