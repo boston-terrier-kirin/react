@@ -19,9 +19,11 @@ function Todos() {
   return (
     <div className="container mt-3">
       <button className="btn btn-primary" onClick={onAdd}>
-        Get Task
+        <span className="me-2">Get Task</span>
         {todosCount > 0 && (
-          <span className="badge bg-primary">{todosCount}</span>
+          <span className="badge rounded-pill bg-light text-dark">
+            {todosCount}
+          </span>
         )}
       </button>
       <ul className="mt-3 ps-0">

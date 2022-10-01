@@ -4,8 +4,8 @@ import reduxThunk from 'redux-thunk';
 import { rootReducer } from './root.reducer';
 
 const middlewares = [
-  process.env.NODE_ENV === 'development' && logger,
   reduxThunk,
+  process.env.NODE_ENV === 'development' && logger,
 ].filter(Boolean);
 
 const composeEnhancer =
