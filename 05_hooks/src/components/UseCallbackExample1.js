@@ -32,7 +32,7 @@ function UseCallbackExample1() {
   );
 }
 
-// [2]ここでReact.memo
+// [2]ここでReact.memo。React.memoはコンポーネントのメモ化。
 const Button = React.memo(({ addTask }) => {
   console.log('Button Rendered');
   return (

@@ -9,6 +9,7 @@ import UseCallbackExample2 from './components/UseCallbackExample2';
 import CustomFookExample1 from './components/CustomFookExample1';
 import CustomFookExample2 from './components/CustomFookExample2';
 import CustomFookExample3 from './components/CustomFookExample3';
+import UseReducerExample from './components/UseReducerExample';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             path="/custom-hook-example-3"
             element={<CustomFookExample3 />}
           />
+          <Route path="/usereducer-example" element={<UseReducerExample />} />
         </Routes>
       </div>
     </Router>

@@ -59,6 +59,12 @@ function Home() {
         >
           Custom Hook - useLocalStrage()
         </Link>
+        <Link
+          className="list-group-item list-group-item-action"
+          to="usereducer-example"
+        >
+          useReducer Example
+        </Link>
       </ul>
     </>
   );
