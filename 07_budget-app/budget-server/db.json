@@ -1,12 +1,6 @@
 {
   "budgets": [
     {
-      "id": "d9515ef1-d3a4-4cca-8a49-5bee476b5ea5",
-      "description": "4月分給料",
-      "value": "30002",
-      "isExpense": false
-    },
-    {
       "description": "9月分給料",
       "value": "50000",
       "isExpense": false,
