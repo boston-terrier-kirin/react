@@ -68,6 +68,10 @@ function Profile() {
     }));
   };
 
+  const onEdit = (id) => {
+    navigate(`/edit-listing/${id}`);
+  };
+
   const onDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
       await deleteDoc(doc(db, 'listings', id));
@@ -153,6 +157,7 @@ function Profile() {
                   key={listing.id}
                   listing={listing.data}
                   id={listing.id}
+                  onEdit={() => onEdit(listing.id)}
                   onDelete={() => onDelete(listing.id)}
                 />
               ))}
