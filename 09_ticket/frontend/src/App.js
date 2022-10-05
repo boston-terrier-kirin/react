@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './components/PrivateRoute';
 import NewTicket from './pages/NewTicket';
+import Tickets from './pages/Tickets';
+import Ticket from './pages/Ticket';
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
             <Route path="/new-ticket" element={<PrivateRoute />}>
               {/* PrivateRoute の Outlet 部分 */}
               <Route path="/new-ticket" element={<NewTicket />} />
+            </Route>
+            <Route path="/tickets" element={<PrivateRoute />}>
+              {/* PrivateRoute の Outlet 部分 */}
+              <Route path="/tickets" element={<Tickets />} />
+            </Route>
+            <Route path="/ticket/:ticketId" element={<PrivateRoute />}>
+              {/* PrivateRoute の Outlet 部分 */}
+              <Route path="/ticket/:ticketId" element={<Ticket />} />
             </Route>
           </Routes>
         </div>
