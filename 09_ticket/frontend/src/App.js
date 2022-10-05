@@ -22,7 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/new-ticket" element={<PrivateRoute />}>
               {/* PrivateRoute の Outlet 部分 */}
-              <Route path="/new-ticket" element={<NewTicket />} />
+              <Route exact path="/new-ticket" element={<NewTicket />} />
             </Route>
             <Route path="/tickets" element={<PrivateRoute />}>
               {/* PrivateRoute の Outlet 部分 */}

@@ -17,11 +17,9 @@ function Tickets() {
   }, [dispatch]);
 
   useEffect(() => {
-    return () => {
-      if (isSuccess) {
-        dispatch(reset);
-      }
-    };
+    if (isSuccess) {
+      dispatch(reset());
+    }
   }, [dispatch, isSuccess]);
 
   if (isLoading) {
