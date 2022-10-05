@@ -4,6 +4,10 @@ const initialState = {
 };
 
 const counterReducer = (state = initialState, action) => {
+  // dispatchするたびに、authReducerもcounterReducerも呼ばれている。
+  // typeの値が重複すると、変なことが起きてしまうので要注意。
+  console.log('counterReducer');
+
   if (action.type === 'increment') {
     return {
       ...state,
