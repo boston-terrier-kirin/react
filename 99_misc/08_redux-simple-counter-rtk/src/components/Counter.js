@@ -26,12 +26,16 @@ const Counter = () => {
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      {show && <div className={classes.value}>{counter}</div>}
-      <div>
-        <button onClick={incrementHandler}>INCREMENT</button>
-        <button onClick={increaseByHandler}>INCREASE BY 5</button>
-        <button onClick={decrementHandler}>DECREMENT</button>
-      </div>
+      {show && (
+        <>
+          <div className={classes.value}>{counter}</div>
+          <div>
+            <button onClick={incrementHandler}>INCREMENT</button>
+            <button onClick={increaseByHandler}>INCREASE BY 5</button>
+            <button onClick={decrementHandler}>DECREMENT</button>
+          </div>
+        </>
+      )}
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );

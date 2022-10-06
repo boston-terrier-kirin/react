@@ -1,0 +1,29 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "池袋ウエストゲートパーク",
+      "price": 800,
+      "description": "ISBN 4-16-317990-9"
+    },
+    {
+      "id": 2,
+      "title": "少年計数機",
+      "price": 1000,
+      "description": "ISBN 4-16-319280-8"
+    },
+    {
+      "id": 3,
+      "title": "骨音",
+      "price": 1300,
+      "description": "ISBN 4-16-321350-3"
+    },
+    {
+      "id": 4,
+      "title": "電子の星",
+      "price": 500,
+      "description": "ISBN 4-16-322390-8"
+    }
+  ],
+  "cart": []
+}
