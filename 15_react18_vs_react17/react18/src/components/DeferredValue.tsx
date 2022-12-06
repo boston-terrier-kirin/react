@@ -81,6 +81,7 @@ const DeferredValue = () => {
           C
         </Avatar>
       </div>
+
       <div onClick={resetHandler} className="mt-3 mb-3">
         <button className="btn btn-primary">リセット</button>
       </div>

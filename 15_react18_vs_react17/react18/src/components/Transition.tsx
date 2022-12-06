@@ -1,4 +1,4 @@
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import Avatar from './Avatar';
 import BackBtn from './BackBtn';
 import Desc from './Desc';
@@ -39,7 +39,14 @@ const tasks = generateDummyTask();
 const Transition = () => {
   const [isPending, startTransition] = useTransition();
   const [selected, setSelected] = useState<string>('');
-  const [taskList, setTaskList] = useState<Task[]>(tasks);
+  const [taskList, setTaskList] = useState<Task[]>([]);
+
+  useEffect(() => {
+    // 優先順位の低いステート更新をstartTransitionに入れる。
+    startTransition(() => {
+      setTaskList(tasks);
+    });
+  }, []);
 
   const clickHandler = (assignee: string) => {
     setSelected(assignee);
@@ -53,7 +60,11 @@ const Transition = () => {
 
   const resetHandler = () => {
     setSelected('');
-    setTaskList(tasks);
+
+    // 優先順位の低いステート更新をstartTransitionに入れる。
+    startTransition(() => {
+      setTaskList(tasks);
+    });
   };
 
   return (
@@ -84,10 +95,12 @@ const Transition = () => {
           C
         </Avatar>
       </div>
+
       <div onClick={resetHandler} className="mt-3 mb-3">
         <button className="btn btn-primary">リセット</button>
       </div>
 
+      {/* isPendingでローディングを表示する */}
       {isPending ? (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
