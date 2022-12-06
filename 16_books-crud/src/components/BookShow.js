@@ -46,7 +46,7 @@ const BookShow = ({ book, onDeleteBook, onEditBook }) => {
     <div className="col-3">
       <div className="card">
         <img
-          src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80"
+          src={`https://picsum.photos/seed/${book.id}/300/200`}
           alt="book"
           className="card-img-top"
         />
