@@ -30,12 +30,10 @@ const AutoBatchEventHandler = () => {
       <BackBtn />
 
       <Desc title="AutoBatchEventHandler">
-        <li>
-          React17の時点で、イベントハンドラーの中ではAutoBatchingが効いている。
-        </li>
-        <li>
-          flushSyncを使えばAutomaticBatchingされなくなるらしいが、どうも効いていない。
-        </li>
+        {[
+          'React17の時点で、イベントハンドラーの中ではAutoBatchingが効いている。',
+          'flushSyncを使えばAutomaticBatchingされなくなるらしいが、どうも効いていない。',
+        ]}
       </Desc>
 
       <div className="mb-3">

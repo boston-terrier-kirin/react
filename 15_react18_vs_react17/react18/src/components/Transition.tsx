@@ -60,8 +60,10 @@ const Transition = () => {
       <BackBtn />
 
       <Desc title="Transition">
-        <li>優先順位の低いステート更新をstartTransitionに入れる。</li>
-        <li>useTransitionでisPendingが取れるので、Loadingを表示できる。</li>
+        {[
+          '優先順位の低いステート更新をstartTransitionに入れる。',
+          'useTransitionでisPendingが取れるので、Loadingを表示できる。',
+        ]}
       </Desc>
 
       <div

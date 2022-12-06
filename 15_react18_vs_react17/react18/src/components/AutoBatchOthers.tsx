@@ -34,9 +34,9 @@ const AutoBatchOthers = () => {
       <BackBtn />
 
       <Desc title="AutoBatchOthers">
-        <li>
-          React18で、イベントハンドラー以外で複数回ステート更新しても、1回にまとめてステート更新してくれるようになった。
-        </li>
+        {
+          'React18で、イベントハンドラー以外で複数回ステート更新しても、1回にまとめてステート更新してくれるようになった。'
+        }
       </Desc>
 
       <div className="mb-3">

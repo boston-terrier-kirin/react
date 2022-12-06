@@ -57,12 +57,10 @@ const DeferredValue = () => {
       <BackBtn />
 
       <Desc title="DefferedValue">
-        <li>
-          useTransitionが使えない場合、子供側でuseDeferredValueを使えてばuseTransitionと同じ効果がある。
-        </li>
-        <li>
-          ただし、useDeferredValueには、isPendingでloadingを表示することができない。
-        </li>
+        {[
+          'useTransitionが使えない場合、子供側でuseDeferredValueを使えてばuseTransitionと同じ効果がある。',
+          'ただし、useDeferredValueには、isPendingでloadingを表示することができない。',
+        ]}
       </Desc>
 
       <div
