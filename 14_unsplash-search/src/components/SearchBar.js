@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './SearchBar.css';
 
 const SearchBar = ({ onSubmit }) => {
   const [term, setTerm] = useState('');
@@ -13,8 +14,9 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <form onSubmit={handleSubmit}>
+        <label>Enter Search Term</label>
         <input value={term} onChange={handleChange} />
 
         {/* onChangeをつけないと、値を入力しても何も表示されないreadonly状態になってしまう。 */}
