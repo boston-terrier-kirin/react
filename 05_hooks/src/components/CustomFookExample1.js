@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import useFetch1 from '../hooks/useFetch1';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function CustomFookExample1() {
   const { fetchData, data, loading, error } = useFetch1();
@@ -10,6 +12,7 @@ function CustomFookExample1() {
       fetchData('https://jsonplaceholder.typicode.com/posts', {});
     },
     // useCallbackが効いて、無限ループにならない。
+    // React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array.
     [fetchData]
   );
 
@@ -23,9 +26,12 @@ function CustomFookExample1() {
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc title="Custom Hook - useFetch1()">
+        <DescItem>カスタムHookでuseCallbackを使い、無限ループを防ぐ。</DescItem>
+      </Desc>
+
       <ul className="mt-3 ps-0">
         {data.map((post) => (
           <li className="list-group-item list-group-item-action" key={post.id}>

@@ -1,15 +1,26 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Todo from './Todo';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function UseRefExample3() {
   const [showTodo, setShowTodo] = useState(true);
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc title="UseRefExample3">
+        <DescItem>
+          Loading中にToggle
+          Todoでコンポーネントをunmoundしてもエラーにならないようにする。
+        </DescItem>
+        <DescItem>
+          本来であれば、unmountされたコンポーネントのステートをupdateできないエラーになるはず。※事象再現せず。
+        </DescItem>
+      </Desc>
+
       <div>
         {showTodo && <Todo />}
         <button

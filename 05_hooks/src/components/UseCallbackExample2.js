@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function UseCallbackExample2() {
   const [tasks, setTasks] = useState([]);
@@ -20,15 +23,21 @@ function UseCallbackExample2() {
     },
     // fetchTaskを依存関係に指定しなくても特に警告はでない。
     // 依存関係の問題でuseCallbakを使うのは、CustomFookExample1 で。
+    // React Hook useEffect has a missing dependency: 'params.id'. Either include it or remove the dependency array.
     [params.id]
   );
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
-      <ul className="mt-3 ps-0">
+      <BackBtn />
+
+      <Desc title="UseCallbackExample2">
+        <DescItem>
+          fetchTaskを依存関係に指定しなくても特に警告はでない。
+        </DescItem>
+      </Desc>
+
+      <ul className="list-group mt-3 ps-0">
         {tasks.map((task, index) => (
           <li className="list-group-item list-group-item-action" key={index}>
             {task.title}

@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
 import useLocalStrage from '../hooks/useLocalStrage';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function CustomFookExample3() {
   const [task, setTask] = useLocalStrage('task', '');
@@ -21,9 +23,12 @@ function CustomFookExample3() {
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc title="Custom Hook - useLocalStrage()">
+        <DescItem>カスタムHookでlocalStorageを使う。</DescItem>
+      </Desc>
+
       <form onSubmit={onSubmit} className="w-50">
         <div className="mb-3">
           <label htmlFor="" className="form-label">
@@ -38,6 +43,7 @@ function CustomFookExample3() {
         </div>
         <button className="btn btn-primary">Submit</button>
       </form>
+
       <ul className="mt-3 ps-0">
         {tasks.map((task, index) => (
           <li className="list-group-item list-group-item-action" key={index}>

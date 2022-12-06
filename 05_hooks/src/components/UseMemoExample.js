@@ -1,14 +1,26 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useMemo, useRef, useEffect } from 'react';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function UseMemoExample() {
   const [number, setNumber] = useState(1);
   const [inc, setInc] = useState(1);
 
-  // numberが変わった時だけ、getSqrtが呼ばれる。
+  const renders = useRef(1);
+
+  useEffect(() => {
+    renders.current = renders.current + 1;
+  });
+
+  // こっちだと、ReRenderをクリックしてもnumberが変わっていないので、getSqrtが呼ばれない。
+  // numberが変われば当然、再計算は走る。
   const sqrt = useMemo(() => {
     return getSqrt(number);
   }, [number]);
+
+  // こっちだと、ReRenderをクリックするたびにステートが更新されてgetSqrtの計算が始まってしまう。
+  // const sqrt = getSqrt(number);
 
   const onReRender = () => {
     setInc((prev) => {
@@ -19,26 +31,34 @@ function UseMemoExample() {
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc>
+        <DescItem>
+          sqrtをmemo化していない場合、ReRenderをクリックしただけで、getSqrtが呼ばれてしまう。numberは変わっていないので再計算は不要。
+        </DescItem>
+        <DescItem>
+          sqrtをmemo化した場合、ReRenderをクリックしただけでnumberが変わっていなければ、再計算は走らなくなる。
+        </DescItem>
+      </Desc>
 
       <div>
-        <input
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
-          type="text"
-          className="form-control w-25 mb-3"
-        />
-
         <h2 className="my-2">
           The sqrt of {number} is {sqrt}
         </h2>
 
-        {/* このボタンは何もやっていないのに、再レンダリングが走って、getSqrtが呼ばれる。 */}
+        <input
+          type="number"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          className="form-control w-25 mb-3"
+        />
+
+        {/* このボタンは何ステートを更新しているだけなのに、getSqrtが呼ばれる。 */}
         <button onClick={onReRender} className="btn btn-primary mb-3">
           ReRender
         </button>
+        <p>Renders: {renders.current}</p>
       </div>
     </div>
   );

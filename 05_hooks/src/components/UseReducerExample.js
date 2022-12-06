@@ -1,5 +1,7 @@
 import React, { useState, useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 const taskReducer = (state, action) => {
   switch (action.type) {
@@ -51,9 +53,12 @@ function UseReducerExample() {
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc title="UseReducerExample">
+        <DescItem>useReducerで追加と削除。</DescItem>
+      </Desc>
+
       <div>
         <button className="btn btn-primary" onClick={onAdd}>
           Get Task

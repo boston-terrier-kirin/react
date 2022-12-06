@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <>
-      <h1 className="mb-3">React Hooks</h1>
+      <h1 className="display-5 mb-3">React Hooks</h1>
       <ul className="list-group">
         <Link
           className="list-group-item list-group-item-action"

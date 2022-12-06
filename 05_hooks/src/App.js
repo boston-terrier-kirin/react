@@ -14,7 +14,7 @@ import UseReducerExample from './components/UseReducerExample';
 function App() {
   return (
     <Router>
-      <div className="container mt-5">
+      <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/useref-example-1" element={<UseRefExample1 />} />

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function UseRefExample2() {
   const renders = useRef(1);
@@ -7,17 +9,24 @@ function UseRefExample2() {
   const [name, setName] = useState('');
 
   useEffect(() => {
+    // ref.currentを応用すると、1つ前のステートをGETできる。
     renders.current = renders.current + 1;
     prevName.current = name;
   }, [name]);
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
-      <h1>Renders: {renders.current}</h1>
-      <h2>Prev Name: {prevName.current}</h2>
+      <BackBtn />
+
+      <Desc title="UseRefExample2">
+        <DescItem>
+          ref.currentを応用すると、1つ前のステートをGETできる。
+        </DescItem>
+        <DescItem>使いどころはイマイチ不明。</DescItem>
+      </Desc>
+
+      <p>Renders: {renders.current}</p>
+      <p>Prev Name: {prevName.current}</p>
       <input
         type="text"
         value={name}

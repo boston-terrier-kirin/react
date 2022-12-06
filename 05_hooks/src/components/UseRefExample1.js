@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import BackBtn from './BackBtn';
+import Desc from './Desc';
+import DescItem from './DescItem';
 
 function UseRefExample1() {
   const inputRef = useRef();
@@ -12,9 +14,12 @@ function UseRefExample1() {
 
   return (
     <div>
-      <Link className="btn btn-primary mb-4" to="/">
-        <i className="bi bi-arrow-bar-left"></i> Back
-      </Link>
+      <BackBtn />
+
+      <Desc title="UseRefExample1">
+        <DescItem>ref.currentでHTMLがGETできる。</DescItem>
+      </Desc>
+
       <form onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input
