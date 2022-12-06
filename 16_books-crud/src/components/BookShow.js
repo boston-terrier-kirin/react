@@ -4,17 +4,43 @@ import BookEdit from './BookEdit';
 const BookShow = ({ book, onDeleteBook, onEditBook }) => {
   const [editMode, setEditMode] = useState(false);
 
-  const deleteBookHandler = () => {
-    onDeleteBook(book);
-  };
-
   const toggleEditModeHandler = () => {
     setEditMode((prev) => !prev);
   };
 
-  const editBookHandler = (book) => {
-    onEditBook(book);
+  const deleteBookHandler = () => {
+    onDeleteBook(book);
   };
+
+  let content = (
+    <>
+      <h5 className="card-title">{book.title}</h5>
+      <div className="d-flex">
+        <button
+          onClick={toggleEditModeHandler}
+          className="btn btn-warning flex-grow-1 me-2"
+        >
+          Edit
+        </button>
+        <button
+          onClick={deleteBookHandler}
+          className="btn btn-danger flex-grow-1"
+        >
+          Delete
+        </button>
+      </div>
+    </>
+  );
+
+  if (editMode) {
+    content = (
+      <BookEdit
+        book={book}
+        onEditBook={onEditBook}
+        onToggleEditMode={toggleEditModeHandler}
+      />
+    );
+  }
 
   return (
     <div className="col-3">
@@ -24,33 +50,7 @@ const BookShow = ({ book, onDeleteBook, onEditBook }) => {
           alt="book"
           className="card-img-top"
         />
-        <div className="card-body">
-          {!editMode ? (
-            <>
-              <h5 className="card-title">{book.title}</h5>
-              <div className="d-flex">
-                <button
-                  onClick={deleteBookHandler}
-                  className="btn btn-danger flex-grow-1 me-2"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={toggleEditModeHandler}
-                  className="btn btn-warning flex-grow-1"
-                >
-                  Edit
-                </button>
-              </div>
-            </>
-          ) : (
-            <BookEdit
-              book={book}
-              onEditBook={editBookHandler}
-              onToggleEditMode={toggleEditModeHandler}
-            />
-          )}
-        </div>
+        <div className="card-body">{content}</div>
       </div>
     </div>
   );

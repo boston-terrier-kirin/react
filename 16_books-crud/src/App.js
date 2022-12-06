@@ -15,7 +15,6 @@ const App = () => {
   };
 
   const editBookHandler = (bookToEdit) => {
-    console.log(bookToEdit);
     const newBooks = books.map((book) => {
       if (book.id !== bookToEdit.id) {
         return book;

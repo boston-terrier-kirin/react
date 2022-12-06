@@ -9,7 +9,9 @@ const BookEdit = ({ book, onEditBook, onToggleEditMode }) => {
     onToggleEditMode();
   };
 
-  const toggleEditModeHandler = () => {
+  const toggleEditModeHandler = (e) => {
+    // これをやらないと、Form submission canceled because the form is not connected が表示される。
+    e.preventDefault();
     onToggleEditMode();
   };
 
@@ -24,6 +26,7 @@ const BookEdit = ({ book, onEditBook, onToggleEditMode }) => {
           placeholder="Enter a Title"
         />
       </div>
+
       <div className="d-flex justify-content-around">
         <button className="btn btn-primary flex-grow-1 me-2">Save</button>
         <button
