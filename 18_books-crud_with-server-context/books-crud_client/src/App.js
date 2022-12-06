@@ -5,47 +5,55 @@ import BookList from './components/BookList';
 
 const App = () => {
   const [books, setBooks] = useState([]);
-  const [bookUpdated, setBookUpdated] = useState(0);
 
   useEffect(() => {
     const fetchBooks = async () => {
       const res = await axios.get('http://localhost:3001/books');
       setBooks(res.data);
-      console.log('State UPDATED!!');
     };
 
     fetchBooks();
-  }, [bookUpdated]);
-
-  const stateUpdate = () => {
-    // 更新されるたびに最新の状態を取り直す方式を採用。
-    setBookUpdated((prev) => prev + 1);
-  };
+  }, []);
 
   const createBook = async (book) => {
-    await axios.post('http://localhost:3001/books', {
+    const res = await axios.post('http://localhost:3001/books', {
       title: book.title,
     });
 
-    stateUpdate();
+    setBooks((prev) => [...prev, res.data]);
   };
 
   const editBook = async (bookToEdit) => {
-    await axios.put(`http://localhost:3001/books/${bookToEdit.id}`, {
-      title: bookToEdit.title,
+    const res = await axios.put(
+      `http://localhost:3001/books/${bookToEdit.id}`,
+      {
+        title: bookToEdit.title,
+      }
+    );
+
+    const newBooks = books.map((book) => {
+      if (book.id !== bookToEdit.id) {
+        return book;
+      }
+
+      return {
+        ...book,
+        ...res.data,
+      };
     });
 
-    stateUpdate();
+    setBooks(newBooks);
   };
 
   const deleteBook = async (bookToDelete) => {
     await axios.delete(`http://localhost:3001/books/${bookToDelete.id}`);
+    const newBooks = books.filter((book) => book.id !== bookToDelete.id);
 
-    stateUpdate();
+    setBooks(newBooks);
   };
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-2">
       <h1 className="display-5">Reading List</h1>
 
       <div className="mb-3">
