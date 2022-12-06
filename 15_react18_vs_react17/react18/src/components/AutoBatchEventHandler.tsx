@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { flushSync } from 'react-dom';
 import BackBtn from './BackBtn';
 import Desc from './Desc';
+import DescItem from './DescItem';
 
 const AutoBatchEventHandler = () => {
   // Automatic Batching
@@ -30,10 +31,12 @@ const AutoBatchEventHandler = () => {
       <BackBtn />
 
       <Desc title="AutoBatchEventHandler">
-        {[
-          'React17の時点で、イベントハンドラーの中ではAutoBatchingが効いている。',
-          'flushSyncを使えばAutomaticBatchingされなくなるらしいが、どうも効いていない。',
-        ]}
+        <DescItem>
+          React17の時点で、イベントハンドラーの中ではAutoBatchingが効いている。
+        </DescItem>
+        <DescItem>
+          flushSyncを使えばAutomaticBatchingされなくなるらしいが、どうも効いていない。
+        </DescItem>
       </Desc>
 
       <div className="mb-3">

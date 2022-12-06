@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Avatar from './Avatar';
 import BackBtn from './BackBtn';
 import Desc from './Desc';
+import DescItem from './DescItem';
 import TaskList from './TaskList';
 
 export type Task = {
@@ -57,10 +58,12 @@ const DeferredValue = () => {
       <BackBtn />
 
       <Desc title="DefferedValue">
-        {[
-          'useTransitionが使えない場合、子供側でuseDeferredValueを使えてばuseTransitionと同じ効果がある。',
-          'ただし、useDeferredValueには、isPendingでloadingを表示することができない。',
-        ]}
+        <DescItem>
+          useTransitionが使えない場合、子供側でuseDeferredValueを使えてばuseTransitionと同じ効果がある。
+        </DescItem>
+        <DescItem>
+          ただし、useDeferredValueには、isPendingでloadingを表示することができない。
+        </DescItem>
       </Desc>
 
       <div

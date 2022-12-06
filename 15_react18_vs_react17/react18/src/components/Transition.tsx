@@ -2,6 +2,7 @@ import { useState, useTransition } from 'react';
 import Avatar from './Avatar';
 import BackBtn from './BackBtn';
 import Desc from './Desc';
+import DescItem from './DescItem';
 
 type Task = {
   id: number;
@@ -60,10 +61,12 @@ const Transition = () => {
       <BackBtn />
 
       <Desc title="Transition">
-        {[
-          '優先順位の低いステート更新をstartTransitionに入れる。',
-          'useTransitionでisPendingが取れるので、Loadingを表示できる。',
-        ]}
+        <DescItem>
+          優先順位の低いステート更新をstartTransitionに入れる。
+        </DescItem>
+        <DescItem>
+          useTransitionでisPendingが取れるので、Loadingを表示できる。
+        </DescItem>
       </Desc>
 
       <div

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BackBtn from './BackBtn';
 import Desc from './Desc';
+import DescItem from './DescItem';
 
 type Todo = {
   userId: number;
@@ -34,9 +35,9 @@ const AutoBatchOthers = () => {
       <BackBtn />
 
       <Desc title="AutoBatchOthers">
-        {
-          'React18で、イベントハンドラー以外で複数回ステート更新しても、1回にまとめてステート更新してくれるようになった。'
-        }
+        <DescItem>
+          React18で、イベントハンドラー以外で複数回ステート更新しても、1回にまとめてステート更新してくれるようになった。
+        </DescItem>
       </Desc>
 
       <div className="mb-3">
