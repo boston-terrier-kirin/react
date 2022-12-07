@@ -32,7 +32,8 @@ const Accordion = ({ items }) => {
           className={`cursor-pointer px-3 py-2 flex items-center justify-between ${heaherClassName} ${headerBorder}`}
           onClick={() => handleClick(index)}
         >
-          {item.label} {headerIcon}
+          <span>{item.label}</span>
+          <span>{headerIcon}</span>
         </div>
         {isExpanded && (
           <div className="px-5 py-2 bg-neutral-50 show-accordion-item block">
