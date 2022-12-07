@@ -22,7 +22,8 @@ const Accordion = ({ items }) => {
       ) : (
         <BsChevronDown className="rotate-icon-close" />
       );
-    const itemClassName = index === expandedIndex ? 'block' : 'hidden';
+    const itemClassName =
+      index === expandedIndex ? 'show-accordion-item block' : 'hidden';
 
     return (
       <div key={item.id}>
@@ -32,9 +33,7 @@ const Accordion = ({ items }) => {
         >
           {item.label} {headerIcon}
         </div>
-        <div
-          className={`px-5 py-2 bg-neutral-50 show-accordion-item ${itemClassName}`}
-        >
+        <div className={`px-5 py-2 bg-neutral-50 ${itemClassName}`}>
           {item.content}
         </div>
       </div>
