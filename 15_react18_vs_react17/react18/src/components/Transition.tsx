@@ -101,11 +101,12 @@ const Transition = () => {
       </div>
 
       {/* isPendingでローディングを表示する */}
-      {isPending ? (
+      {/* || は最初のtruthyを返す、&&は最後のtruthyを返す。isPendingとjsxを比較して、truthyになっている方がレンダリングされる。 */}
+      {isPending && (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
-      ) : null}
+      )}
 
       <div>
         {taskList.length} / {tasks.length}

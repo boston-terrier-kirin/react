@@ -13,17 +13,18 @@ const Accordion = ({ items }) => {
   };
 
   const itemsToRedner = items.map((item, index) => {
-    const heaherClassName =
-      index === expandedIndex ? 'bg-blue-100 text-blue-600 border-b' : '';
-    const headerBorder = index === 0 ? '' : 'border-gray-300 border-t';
-    const headerIcon =
-      index === expandedIndex ? (
-        <BsChevronUp className="rotate-icon-open" />
-      ) : (
-        <BsChevronDown className="rotate-icon-close" />
-      );
-    const itemClassName =
-      index === expandedIndex ? 'show-accordion-item block' : 'hidden';
+    const isExpanded = index === expandedIndex;
+    const firstItem = index === 0;
+
+    const heaherClassName = isExpanded
+      ? 'bg-blue-100 text-blue-600 border-b'
+      : '';
+    const headerIcon = isExpanded ? (
+      <BsChevronUp className="rotate-icon-open" />
+    ) : (
+      <BsChevronDown className="rotate-icon-close" />
+    );
+    const headerBorder = firstItem ? '' : 'border-gray-300 border-t';
 
     return (
       <div key={item.id}>
@@ -33,9 +34,11 @@ const Accordion = ({ items }) => {
         >
           {item.label} {headerIcon}
         </div>
-        <div className={`px-5 py-2 bg-neutral-50 ${itemClassName}`}>
-          {item.content}
-        </div>
+        {isExpanded && (
+          <div className="px-5 py-2 bg-neutral-50 show-accordion-item block">
+            {item.content}
+          </div>
+        )}
       </div>
     );
   });
