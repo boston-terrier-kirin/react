@@ -13,7 +13,42 @@
   50% {
     transform: translateY(-3px);
   }
+  75% {
+    transform: translateY(-1px);
+  }
   100% {
     transform: translateY(0);
+  }
+}
+
+.rotate-icon-open {
+  animation: rotate-icon-open 0.2s ease-in;
+}
+
+.rotate-icon-close {
+  animation: rotate-icon-close 0.2s ease-in;
+}
+
+@keyframes rotate-icon-open {
+  0% {
+    transform: rotate(-180deg);
+  }
+  50% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate-icon-close {
+  0% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -16,7 +16,12 @@ const Accordion = ({ items }) => {
     const heaherClassName =
       index === expandedIndex ? 'bg-blue-100 text-blue-600 border-b' : '';
     const headerBorder = index === 0 ? '' : 'border-gray-300 border-t';
-    const HeaderIcon = index === expandedIndex ? BsChevronUp : BsChevronDown;
+    const headerIcon =
+      index === expandedIndex ? (
+        <BsChevronUp className="rotate-icon-open" />
+      ) : (
+        <BsChevronDown className="rotate-icon-close" />
+      );
     const itemClassName = index === expandedIndex ? 'block' : 'hidden';
 
     return (
@@ -25,9 +30,11 @@ const Accordion = ({ items }) => {
           className={`cursor-pointer px-3 py-2 flex items-center justify-between ${heaherClassName} ${headerBorder}`}
           onClick={() => handleClick(index)}
         >
-          {item.label} <HeaderIcon />
+          {item.label} {headerIcon}
         </div>
-        <div className={`px-5 py-2 show-accordion-item ${itemClassName}`}>
+        <div
+          className={`px-5 py-2 bg-neutral-50 show-accordion-item ${itemClassName}`}
+        >
           {item.content}
         </div>
       </div>
@@ -35,7 +42,9 @@ const Accordion = ({ items }) => {
   });
 
   return (
-    <div className="border border-gray-300 rounded-md">{itemsToRedner}</div>
+    <div className="border border-gray-300 overflow-hidden rounded-md">
+      {itemsToRedner}
+    </div>
   );
 };
 
