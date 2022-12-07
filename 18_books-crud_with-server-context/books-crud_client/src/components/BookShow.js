@@ -1,47 +1,32 @@
 import { useState } from 'react';
+import useBooksContext from '../hooks/use-books-context';
 import BookEdit from './BookEdit';
 
-const BookShow = ({ book, onDeleteBook, onEditBook }) => {
+const BookShow = ({ book }) => {
   const [editMode, setEditMode] = useState(false);
+  const { deleteBook } = useBooksContext();
 
-  const handleToggleEditMode = () => {
+  const handleToggleEdit = () => {
     setEditMode((prev) => !prev);
   };
 
   const handleDeleteBook = () => {
-    onDeleteBook(book);
+    deleteBook(book);
   };
 
   let content = (
-    <>
-      <h5 className="card-title position-absolute top-0 start-0 text-light p-3 fw-bold">
-        {book.title}
-      </h5>
-      <div className="d-flex">
-        <button
-          onClick={handleToggleEditMode}
-          className="btn btn-warning flex-grow-1 me-2"
-        >
-          Edit
-        </button>
-        <button
-          onClick={handleDeleteBook}
-          className="btn btn-danger flex-grow-1"
-        >
-          Delete
-        </button>
-      </div>
-    </>
+    <div className="d-flex">
+      <button onClick={handleToggleEdit} className="btn btn-warning w-50 me-2">
+        Edit
+      </button>
+      <button onClick={handleDeleteBook} className="btn btn-danger w-50">
+        Delete
+      </button>
+    </div>
   );
 
   if (editMode) {
-    content = (
-      <BookEdit
-        book={book}
-        onEditBook={onEditBook}
-        onToggleEditMode={handleToggleEditMode}
-      />
-    );
+    content = <BookEdit book={book} onToggleEdit={handleToggleEdit} />;
   }
 
   return (
@@ -55,7 +40,12 @@ const BookShow = ({ book, onDeleteBook, onEditBook }) => {
             className="card-img-top"
           />
         </div>
-        <div className="card-body">{content}</div>
+        <div className="card-body">
+          <h5 className="card-title position-absolute top-0 start-0 text-light p-3 fw-bold">
+            {book.title}
+          </h5>
+          {content}
+        </div>
       </div>
     </div>
   );

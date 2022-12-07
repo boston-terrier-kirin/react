@@ -3,7 +3,6 @@
 }
 
 .overlay {
-  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -13,4 +12,13 @@
   width: 100%;
   opacity: 0.6;
   background-color: #000;
+  transition: all 0.5s;
+}
+
+.overlay:hover {
+  opacity: 0.4;
+}
+
+.overlay:hover {
+  opacity: 0.4;
 }
