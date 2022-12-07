@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [fetchBooks]);
 
   return (
     <div className="container mt-2">
