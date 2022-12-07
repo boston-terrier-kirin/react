@@ -65,6 +65,12 @@ function Home() {
         >
           useReducer Example
         </Link>
+        <Link
+          className="list-group-item list-group-item-action"
+          to="useEffect-example"
+        >
+          useEffect cleanUp Example
+        </Link>
       </ul>
     </>
   );

@@ -10,6 +10,7 @@ import CustomFookExample1 from './components/CustomFookExample1';
 import CustomFookExample2 from './components/CustomFookExample2';
 import CustomFookExample3 from './components/CustomFookExample3';
 import UseReducerExample from './components/UseReducerExample';
+import UseEffectExample from './components/UseEffectExample';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             element={<CustomFookExample3 />}
           />
           <Route path="/usereducer-example" element={<UseReducerExample />} />
+          <Route path="/useeffect-example" element={<UseEffectExample />} />
         </Routes>
       </div>
     </Router>
