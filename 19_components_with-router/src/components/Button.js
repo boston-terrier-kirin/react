@@ -15,15 +15,15 @@ const Button = ({
     rest.className,
     'px-3 py-1.5 border flex items-center gap-1',
     {
-      'border-blue-500 bg-blue-500 text-white hover:bg-blue-600 hover:border-blue-600':
+      'border-blue-500 bg-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 active:bg-blue-500':
         primary,
-      'border-slate-500 bg-slate-500 text-white hover:bg-slate-600 hover:border-slate-600':
+      'border-slate-500 bg-slate-500 text-white hover:bg-slate-600 hover:border-slate-600 active:bg-slate-500':
         secondary,
-      'border-green-600 bg-green-600 text-white hover:bg-green-700 hover:border-green-700':
+      'border-green-600 bg-green-600 text-white hover:bg-green-700 hover:border-green-700 active:bg-green-600':
         success,
-      'border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600 hover:border-yellow-600':
+      'border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600 hover:border-yellow-600 active:bg-yellow-500':
         warning,
-      'border-red-500 bg-red-500 text-white hover:bg-red-600 hover:border-red-600':
+      'border-red-500 bg-red-500 text-white hover:bg-red-600 hover:border-red-600 active:bg-red-500':
         danger,
       'rounded-full': rounded,
       'rounded-sm': !rounded,
