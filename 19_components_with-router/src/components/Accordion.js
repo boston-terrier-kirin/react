@@ -5,11 +5,18 @@ const Accordion = ({ items }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const handleClick = (index) => {
-    if (index === expandedIndex) {
-      setExpandedIndex(-1);
-    } else {
-      setExpandedIndex(index);
-    }
+    setExpandedIndex((prev) => {
+      if (prev === index) {
+        return -1;
+      }
+      return index;
+    });
+    // ↑より正確にステート更新するためには、こうする。
+    // if (expandedIndex === index {
+    //   setExpandedIndex(-1);
+    // } else {
+    //   setExpandedIndex(index);
+    // }
   };
 
   const itemsToRedner = items.map((item, index) => {
