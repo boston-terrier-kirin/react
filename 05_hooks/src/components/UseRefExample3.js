@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Todo from './Todo';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -9,8 +8,6 @@ function UseRefExample3() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseRefExample3">
         <DescItem>
           Loading中にToggle

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -32,8 +31,6 @@ function UseEffectExample() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="useEffect cleanUp">
         <DescItem>
           cleanUpは2回目の初期処理として呼ばれる。なので、初回のcleanUpは呼ばれない。

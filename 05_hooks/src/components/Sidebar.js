@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <>
-      <h1 className="display-5 mb-3">React Hooks</h1>
+    <div className="sticky-top">
+      <div className="d-flex align-items-center justify-content-between">
+        <h1 className="display-6">
+          <span>React Hooks</span>
+        </h1>
+      </div>
+
       <ul className="list-group">
         <Link
           className="list-group-item list-group-item-action"
@@ -72,7 +77,7 @@ function Home() {
           useEffect cleanUp Example
         </Link>
       </ul>
-    </>
+    </div>
   );
 }
 

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -16,8 +15,6 @@ function UseRefExample2() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseRefExample2">
         <DescItem>
           ref.currentを応用すると、1つ前のステートをGETできる。

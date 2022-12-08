@@ -1,5 +1,4 @@
 import useLocalStrage from '../hooks/useLocalStrage';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -23,8 +22,6 @@ function CustomFookExample3() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="Custom Hook - useLocalStrage()">
         <DescItem>カスタムHookでlocalStorageを使う。</DescItem>
       </Desc>

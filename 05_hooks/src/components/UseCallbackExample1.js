@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -21,8 +20,6 @@ function UseCallbackExample1() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseCallbackExample1">
         <DescItem>
           親が変わったら子はレンダリングされる。⇒ 子でReact.memoする。

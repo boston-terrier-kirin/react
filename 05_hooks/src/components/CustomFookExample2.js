@@ -1,5 +1,4 @@
 import useFetch2 from '../hooks/useFetch2';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -19,8 +18,6 @@ function CustomFookExample2() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="Custom Hook - useFetch2()">
         <DescItem>カスタムHookでuseEffectする場合。</DescItem>
       </Desc>

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import useFetch1 from '../hooks/useFetch1';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -26,8 +25,6 @@ function CustomFookExample1() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="Custom Hook - useFetch1()">
         <DescItem>カスタムHookでuseCallbackを使い、無限ループを防ぐ。</DescItem>
       </Desc>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -29,8 +28,6 @@ function UseCallbackExample2() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseCallbackExample2">
         <DescItem>
           fetchTaskを依存関係に指定しなくても特に警告はでない。

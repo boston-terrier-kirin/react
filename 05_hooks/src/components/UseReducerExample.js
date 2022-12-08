@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -53,8 +52,6 @@ function UseReducerExample() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseReducerExample">
         <DescItem>useReducerで追加と削除。</DescItem>
       </Desc>

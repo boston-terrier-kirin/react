@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -31,9 +30,7 @@ function UseMemoExample() {
 
   return (
     <div>
-      <BackBtn />
-
-      <Desc>
+      <Desc title="UseMemoExample">
         <DescItem>
           sqrtをmemo化していない場合、ReRenderをクリックしただけで、getSqrtが呼ばれてしまう。numberは変わっていないので再計算は不要。
         </DescItem>

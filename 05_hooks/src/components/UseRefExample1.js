@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import BackBtn from './BackBtn';
 import Desc from './Desc';
 import DescItem from './DescItem';
 
@@ -14,8 +13,6 @@ function UseRefExample1() {
 
   return (
     <div>
-      <BackBtn />
-
       <Desc title="UseRefExample1">
         <DescItem>ref.currentでHTMLがGETできる。</DescItem>
       </Desc>
