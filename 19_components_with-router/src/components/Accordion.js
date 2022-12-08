@@ -4,7 +4,11 @@ import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
 const Accordion = ({ items }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
+  // 初回レンダリングじにアニメーションが走ってしまうので、1回でもアコーディオンを開いた後にアニメーションが走るようにする。
+  const [expandedEvenOnce, setExpandedEvenOnce] = useState(false);
+
   const handleClick = (index) => {
+    setExpandedEvenOnce(true);
     setExpandedIndex((prev) => {
       if (prev === index) {
         return -1;
@@ -27,9 +31,9 @@ const Accordion = ({ items }) => {
       ? 'bg-blue-100 text-blue-600 border-b'
       : '';
     const headerIcon = isExpanded ? (
-      <BsChevronUp className="rotate-icon-open" />
+      <BsChevronUp className={expandedEvenOnce && 'rotate-icon-open'} />
     ) : (
-      <BsChevronDown className="rotate-icon-close" />
+      <BsChevronDown className={expandedEvenOnce && 'rotate-icon-close'} />
     );
     const headerBorder = firstItem ? '' : 'border-gray-300 border-t';
 
