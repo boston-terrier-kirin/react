@@ -22,7 +22,7 @@ const AccordionPage = () => {
     },
   ];
   return (
-    <div className="p-5 w-1/4">
+    <div className="p-5 w-2/4">
       <Accordion items={items} />
     </div>
   );

@@ -11,8 +11,8 @@ const DropdownPage = () => {
   ];
 
   return (
-    <div className="p-5 w-1/4">
-      <div>
+    <div className="p-5 w-2/4">
+      <div className="mb-3">
         Selected: {selection.label} / {selection.value}
       </div>
       <div>
@@ -22,7 +22,7 @@ const DropdownPage = () => {
           onChange={(value) => setSelection(value)}
         />
       </div>
-      <div>
+      <div className="mb-3">
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere,
           possimus excepturi iste harum quae tempora fuga blanditiis expedita
