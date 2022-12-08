@@ -23,6 +23,13 @@ function UseEffectExample() {
     };
   }, [counter]);
 
+  useEffect(() => {
+    return () => {
+      // こっちはBackボタンを押して、別の画面に遷移するタイミングで呼ばれる。
+      console.log('cleanUp2');
+    };
+  }, []);
+
   return (
     <div>
       <BackBtn />
@@ -30,6 +37,9 @@ function UseEffectExample() {
       <Desc title="useEffect cleanUp">
         <DescItem>
           cleanUpは2回目の初期処理として呼ばれる。なので、初回のcleanUpは呼ばれない。
+        </DescItem>
+        <DescItem>
+          依存関係が[]のuseEffectは、別の画面に遷移するタイミングでcleanUpが呼ばれる。
         </DescItem>
       </Desc>
 

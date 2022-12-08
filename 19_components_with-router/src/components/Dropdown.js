@@ -1,8 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
+import Panel from './Panel';
 
 const Dropdown = ({ options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const rootElement = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      // Dropdownが非表示になっているかもしれないのでチェックする。
+      if (!rootElement.current) {
+        return;
+      }
+
+      // Captureフェースでイベントを捕まえて、Dropdown以外のクリックの場合は閉じるようにする。
+      if (!rootElement.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    // Capture -> Traget -> Bubbling の Captureで捕えれるように、第三引数をtrueにする。
+    document.addEventListener('click', handler, true);
+
+    return () => {
+      document.removeEventListener('click', handler);
+    };
+  }, []);
 
   const handleClick = () => {
     setIsOpen((prev) => !prev);
@@ -26,17 +49,20 @@ const Dropdown = ({ options, value, onChange }) => {
   const header = value?.label || 'Select...';
 
   return (
-    <div className="relative">
-      <div
-        className="flex justify-between items-center cursor-pointer border rounded p-2 bg-white w-full"
+    <div ref={rootElement} className="relative">
+      <Panel
+        className="flex justify-between items-center cursor-pointer"
         onClick={handleClick}
       >
-        {header} <BsChevronDown />
-      </div>
+        {header}{' '}
+        <span>
+          <BsChevronDown />
+        </span>
+      </Panel>
       {isOpen && (
-        <div className="absolute top-full border-r border-l border-b rounded-b bg-white w-full">
+        <Panel className="absolute top-full border-0 border-r border-l border-b rounded-none rounded-b p-0">
           {optionsToRender}
-        </div>
+        </Panel>
       )}
     </div>
   );
