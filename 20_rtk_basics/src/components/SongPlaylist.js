@@ -1,17 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { addSong, removeSong } from '../store';
 import { createRandomSong } from '../data';
 
 function SongPlaylist() {
-  // To Do:
-  // Get list of songs
-  const songPlaylist = [];
+  const dispatch = useDispatch();
+  const songPlaylist = useSelector((state) => state.songs);
 
   const handleSongAdd = (song) => {
-    // To Do:
-    // Add song to list of songs
+    // actionの正体
+    // {type: 'song/addSong', payload: 'Waiting For a Girl Like You'}
+    // const action = addSong(song);
+    // console.log(action);
+
+    dispatch(addSong(song));
   };
+
   const handleSongRemove = (song) => {
-    // To Do:
-    // Remove song from list of songs
+    dispatch(removeSong(song));
   };
 
   const renderedSongs = songPlaylist.map((song) => {
