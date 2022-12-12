@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { pause } from './pause';
 
 const fetchUsers = createAsyncThunk('users/fetch', async (_, thunkAPI) => {
-  await pause(2000);
+  await pause(3000);
 
   const res = await axios.get('http://localhost:3005/users');
   return res.data;
@@ -10,11 +11,5 @@ const fetchUsers = createAsyncThunk('users/fetch', async (_, thunkAPI) => {
   // thunkAPIも使える
   // return thunkAPI.rejectWithValue('ERROR');
 });
-
-function pause(duration) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, duration);
-  });
-}
 
 export { fetchUsers };
