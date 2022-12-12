@@ -18,6 +18,7 @@ export const useThunk = (thunk) => {
         .catch((err) => {
           setIsLoading(false);
           setError(err);
+          console.log(err);
         });
     },
     [dispatch, thunk]

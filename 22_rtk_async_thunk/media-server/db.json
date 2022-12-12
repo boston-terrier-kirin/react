@@ -1,44 +1,20 @@
 {
   "users": [
     {
-      "name": "Regina Schamberger",
+      "name": "Ms. Clayton Murray",
       "id": 1
     },
     {
-      "name": "Roxanne Cremin",
+      "name": "Shelly Harris",
       "id": 2
     },
     {
-      "name": "Jack Lang",
-      "id": 3
-    },
-    {
-      "name": "Stella Daugherty",
-      "id": 4
-    },
-    {
-      "name": "Lee Ziemann",
-      "id": 5
-    },
-    {
-      "name": "Lula Stokes",
-      "id": 6
-    },
-    {
-      "name": "Glenda Willms",
+      "name": "Bernadette Mills",
       "id": 7
     },
     {
-      "name": "Jeremiah Kertzmann",
+      "name": "Joanna Cummings",
       "id": 8
-    },
-    {
-      "name": "Sandy Hackett",
-      "id": 9
-    },
-    {
-      "name": "Beth Klocko",
-      "id": 10
     }
   ],
   "albums": [],

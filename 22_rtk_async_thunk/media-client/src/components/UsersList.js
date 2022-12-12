@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 import { useThunk } from '../hooks/use-thunk';
 import { fetchUsers } from '../store';
 import { addUser } from '../store';
+import UsersListItem from './UsersListItem';
 import Button from './Button';
 import Skelton from './Skelton';
 
@@ -23,38 +24,32 @@ const UsersList = () => {
     doCreateUser(name);
   };
 
+  let content;
   if (isLoadingUser) {
-    return (
+    content = (
       <div className="mt-3">
         <Skelton times={6} className="h-10 w-full" />
       </div>
     );
+  } else if (loadingUserError) {
+    content = <div>Error fetching data...</div>;
+  } else {
+    content = data.map((user) => <UsersListItem key={user.id} user={user} />);
   }
-
-  if (loadingUserError) {
-    return <div>Error fetching data...</div>;
-  }
-
-  const usersToRender = data.map((user) => (
-    <div className="mb-2 border rounded" key={user.id}>
-      <div className="p-2 flex justify-center items-center cursor-pointer">
-        {user.name}
-      </div>
-    </div>
-  ));
 
   return (
     <div>
       <div className="flex flex-row justify-between items-center mb-3 mt-3">
         <h1 className="text-xl">Users</h1>
-        {isCreatingUser ? (
-          'Creating User...'
-        ) : (
-          <Button onClick={handleUserAdd}>+ Add User</Button>
-        )}
-        {creatingUserError && 'Error creating user...'}
+        <Button
+          onClick={handleUserAdd}
+          loading={isCreatingUser || isLoadingUser}
+        >
+          Add User
+        </Button>
+        {creatingUserError}
       </div>
-      {usersToRender}
+      {content}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import className from 'classnames';
+import { GoSync } from 'react-icons/go';
 
 function Button({
   children,
@@ -9,11 +10,12 @@ function Button({
   danger,
   outline,
   rounded,
+  loading,
   ...rest
 }) {
   const classes = className(
     rest.className,
-    'flex items-center px-3 py-1.5 border',
+    'flex items-center px-3 py-1.5 border h-8',
     {
       'border-blue-500 bg-blue-500 text-white': primary,
       'border-gray-900 bg-gray-900 text-white': secondary,
@@ -27,12 +29,20 @@ function Button({
       'text-green-500': outline && success,
       'text-yellow-400': outline && warning,
       'text-red-500': outline && danger,
+      'opacity-60': loading,
     }
   );
 
   return (
-    <button {...rest} className={classes}>
-      {children}
+    <button {...rest} className={classes} disabled={loading}>
+      {loading ? (
+        <>
+          <GoSync className="animate-spin" />
+          {children}
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
