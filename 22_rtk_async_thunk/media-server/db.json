@@ -1,22 +1,16 @@
 {
   "users": [
     {
-      "name": "Ms. Clayton Murray",
+      "name": "Cedric Beier",
       "id": 1
-    },
-    {
-      "name": "Shelly Harris",
-      "id": 2
-    },
-    {
-      "name": "Bernadette Mills",
-      "id": 7
-    },
-    {
-      "name": "Joanna Cummings",
-      "id": 8
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "userId": 1,
+      "title": "Intelligent Cotton Table",
+      "id": 1
+    }
+  ],
   "photos": []
 }

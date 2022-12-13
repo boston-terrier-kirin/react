@@ -6,18 +6,18 @@ import { fetchUsers } from '../store';
 import { addUser } from '../store';
 import UsersListItem from './UsersListItem';
 import Button from './Button';
-import Skelton from './Skelton';
+import Skeleton from './Skeleton';
 
 const UsersList = () => {
   // 初回のローディングとユーザ作成のローディングを分けたいがために、頑張っている。
-  const [doFetchUser, isLoadingUser, loadingUserError] = useThunk(fetchUsers);
+  const [doFetchUsers, isLoadingUser, loadingUserError] = useThunk(fetchUsers);
   const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
 
   const { data } = useSelector((state) => state.users);
 
   useEffect(() => {
-    doFetchUser();
-  }, [doFetchUser]);
+    doFetchUsers();
+  }, [doFetchUsers]);
 
   const handleUserAdd = () => {
     const name = faker.name.fullName();
@@ -28,7 +28,7 @@ const UsersList = () => {
   if (isLoadingUser) {
     content = (
       <div className="mt-3">
-        <Skelton times={6} className="h-10 w-full" />
+        <Skeleton times={6} className="h-10 w-full" />
       </div>
     );
   } else if (loadingUserError) {

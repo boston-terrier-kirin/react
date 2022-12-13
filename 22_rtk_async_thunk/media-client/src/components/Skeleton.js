@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-const Skelton = ({ times, className }) => {
+const Skeleton = ({ times, className }) => {
   const outerClassNames = classNames(
     'relative',
     'overflow-hidden',
@@ -31,4 +31,4 @@ const Skelton = ({ times, className }) => {
   return boxes;
 };
 
-export default Skelton;
+export default Skeleton;
