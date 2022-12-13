@@ -1,7 +1,6 @@
-import className from 'classnames';
-import { GoSync } from 'react-icons/go';
+import classNames from 'classnames';
 
-function Button({
+const Button = ({
   children,
   primary,
   secondary,
@@ -10,54 +9,51 @@ function Button({
   danger,
   outline,
   rounded,
-  loading,
   ...rest
-}) {
-  const classes = className(
+}) => {
+  const classes = classNames(
     rest.className,
-    'flex items-center px-3 py-1.5 border h-8',
+    'px-3 py-1.5 border flex items-center gap-1',
     {
-      'border-blue-500 bg-blue-500 text-white': primary,
-      'border-gray-900 bg-gray-900 text-white': secondary,
-      'border-green-500 bg-green-500 text-white': success,
-      'border-yellow-400 bg-yellow-400 text-white': warning,
-      'border-red-500 bg-red-500 text-white': danger,
+      'border-blue-500 bg-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 active:bg-blue-500':
+        primary,
+      'border-slate-500 bg-slate-500 text-white hover:bg-slate-600 hover:border-slate-600 active:bg-slate-500':
+        secondary,
+      'border-green-600 bg-green-600 text-white hover:bg-green-700 hover:border-green-700 active:bg-green-600':
+        success,
+      'border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600 hover:border-yellow-600 active:bg-yellow-500':
+        warning,
+      'border-red-500 bg-red-500 text-white hover:bg-red-600 hover:border-red-600 active:bg-red-500':
+        danger,
       'rounded-full': rounded,
-      'bg-white': outline,
+      'rounded-sm': !rounded,
+      'bg-white hover:text-white': outline,
       'text-blue-500': outline && primary,
-      'text-gray-900': outline && secondary,
-      'text-green-500': outline && success,
-      'text-yellow-400': outline && warning,
+      'text-slate-500': outline && secondary,
+      'text-green-700': outline && success,
+      'text-yellow-500': outline && warning,
       'text-red-500': outline && danger,
-      'opacity-60': loading,
     }
   );
 
   return (
-    <button {...rest} className={classes} disabled={loading}>
-      {loading ? (
-        <>
-          <GoSync className="animate-spin" />
-          {children}
-        </>
-      ) : (
-        children
-      )}
+    <button {...rest} className={classes}>
+      {children}
     </button>
   );
-}
+};
 
 Button.propTypes = {
   checkVariationValue: ({ primary, secondary, success, warning, danger }) => {
     const count =
       Number(!!primary) +
       Number(!!secondary) +
-      Number(!!warning) +
       Number(!!success) +
+      Number(!!warning) +
       Number(!!danger);
 
     if (count > 1) {
-      return new Error(
+      throw new Error(
         'Only one of primary, secondary, success, warning, danger can be true'
       );
     }

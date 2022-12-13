@@ -18,7 +18,7 @@ const AlbumsList = ({ user }) => {
     content = <div>Error loading albums.</div>;
   } else {
     content = data.map((album) => (
-      <AlbumsListItem key={album.id} user={user} album={album} />
+      <AlbumsListItem key={album.id} album={album} />
     ));
   }
 
@@ -26,7 +26,13 @@ const AlbumsList = ({ user }) => {
     <div>
       <div className="m-2 flex justify-between items-center">
         <h3 className="text-lg font-bold">Albums for {user.name}</h3>
-        <Button onClick={handleAddAlbum} loading={addAlbumResults.isLoading}>
+        <Button
+          primary
+          outline
+          rounded
+          onClick={handleAddAlbum}
+          loading={addAlbumResults.isLoading}
+        >
           Add Album
         </Button>
       </div>

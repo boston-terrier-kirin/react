@@ -42,6 +42,9 @@ const UsersList = () => {
       <div className="flex flex-row justify-between items-center mb-3 mt-3">
         <h1 className="text-xl">Users</h1>
         <Button
+          primary
+          outline
+          rounded
           onClick={handleUserAdd}
           loading={isCreatingUser || isLoadingUser}
         >

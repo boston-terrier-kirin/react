@@ -1,16 +1,103 @@
 {
   "users": [
     {
-      "name": "Cedric Beier",
+      "name": "Lucille Nikolaus",
       "id": 1
+    },
+    {
+      "name": "Monique Bailey",
+      "id": 2
+    },
+    {
+      "name": "Jan McDermott",
+      "id": 3
+    },
+    {
+      "name": "Ronald Deckow",
+      "id": 4
+    },
+    {
+      "name": "Tasha Raynor",
+      "id": 5
     }
   ],
   "albums": [
     {
       "userId": 1,
-      "title": "Intelligent Cotton Table",
+      "title": "Ergonomic Fresh Pizza",
       "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Generic Frozen Cheese",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "title": "Sleek Cotton Chair",
+      "id": 3
+    },
+    {
+      "userId": 5,
+      "title": "Handcrafted Rubber Car",
+      "id": 4
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 1,
+      "url": "https://loremflickr.com/150/150/abstract?lock=59610",
+      "id": 5
+    },
+    {
+      "albumId": 2,
+      "url": "https://loremflickr.com/150/150/abstract?lock=96338",
+      "id": 9
+    },
+    {
+      "albumId": 2,
+      "url": "https://loremflickr.com/150/150/abstract?lock=43369",
+      "id": 12
+    },
+    {
+      "albumId": 2,
+      "url": "https://loremflickr.com/150/150/abstract?lock=29991",
+      "id": 13
+    },
+    {
+      "albumId": 2,
+      "url": "https://loremflickr.com/150/150/abstract?lock=87455",
+      "id": 14
+    },
+    {
+      "albumId": 1,
+      "url": "https://loremflickr.com/150/150/abstract?lock=67352",
+      "id": 15
+    },
+    {
+      "albumId": 1,
+      "url": "https://loremflickr.com/150/150/abstract?lock=10541",
+      "id": 17
+    },
+    {
+      "albumId": 3,
+      "url": "https://loremflickr.com/150/150/abstract?lock=10353",
+      "id": 18
+    },
+    {
+      "albumId": 4,
+      "url": "https://loremflickr.com/150/150/abstract?lock=53081",
+      "id": 19
+    },
+    {
+      "albumId": 4,
+      "url": "https://loremflickr.com/150/150/abstract?lock=97015",
+      "id": 20
+    },
+    {
+      "albumId": 4,
+      "url": "https://loremflickr.com/150/150/abstract?lock=36740",
+      "id": 21
+    }
+  ]
 }
