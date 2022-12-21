@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #292524;
+  color: #fafaf9;
+  font-family: 'Sono', sans-serif;
+  padding: 48px 64px;
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding: 32px 48px;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo img {
+  width: 68px;
+  height: 68px;
+}
+
+h1 {
+  font-size: 42px;
+  text-transform: uppercase;
+  font-family: 'Coiny', cursive;
+
+  /* POINT：Fontの影響で大きな文字が縦中央にならない場合、marginをつける */
+  margin-top: 6px;
+}
+
+.fact-form {
+  background-color: #44403c;
+  margin-bottom: 40px;
+  padding: 16px 32px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fact-form input,
+.fact-form select {
+  background-color: #78716c;
+  border: 1px solid #78716c;
+  border-radius: 50px;
+  padding: 16px;
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+
+  transition: all 0.3s;
+}
+
+.fact-form input:focus,
+.fact-form select:focus {
+  border: 1px solid #a8a29e;
+}
+
+.fact-form input:first-child {
+  flex: 1;
+}
+
+.fact-form input::placeholder {
+  color: #a8a29e;
+  font-family: inherit;
+}
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+@media (max-width: 1000px) {
+  .fact-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fact-form span {
+    align-self: flex-end;
+    margin-top: -6px;
+    margin-right: 12px;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  column-gap: 16px;
+}
+
+.category {
+  list-style: none;
+  margin-bottom: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .category {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.fact {
+  font-size: 20px;
+  line-height: 1.4;
+  background-color: #44403c;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .fact {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+}
+
+.source:link,
+.source:visited {
+  color: #a8a29e;
+  text-decoration: none;
+  margin-left: 12px;
+
+  transition: all 0.3s;
+}
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+
+.tag {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Coiny', cursive;
+  padding: 3px 10px 0 10px;
+  border-radius: 50px;
+}
+
+.vote-buttons {
+  margin-left: auto;
+
+  /* POINT：widthが足りなくなって折り返してしまう場合、flex-shrink: 0 にする。 */
+  flex-shrink: 0;
+
+  display: flex;
+  gap: 8px;
+}
+
+.vote-buttons button {
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 600;
+  color: inherit;
+  padding: 6px 12px;
+  border-radius: 50px;
+  border: none;
+  background-color: #57534e;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.vote-buttons button:hover {
+  background-color: #292524;
+}
+
+.btn {
+  border: none;
+  border-radius: 50px;
+  font-family: 'Coiny', sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 17px;
+  padding: 16px 16px 13px 16px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  color: inherit;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: rotate(-2deg);
+}
+
+.btn-large {
+  font-size: 20px;
+  padding: 20px 32px 17px;
+}
+
+.btn-all-categories {
+  width: 100%;
+}
+
+.btn-category {
+  width: 100%;
+  background-image: none;
+}
