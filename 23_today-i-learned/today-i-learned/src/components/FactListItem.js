@@ -1,4 +1,8 @@
-const FactListItem = ({ fact }) => {
+const FactListItem = ({ fact, categories }) => {
+  const backgroundColor = categories.find(
+    (cat) => cat.value === fact.category
+  ).color;
+
   return (
     <li className="fact">
       <p className="fact-text">
@@ -12,7 +16,7 @@ const FactListItem = ({ fact }) => {
           (Source)
         </a>
       </p>
-      <span className="tag" style={{ backgroundColor: '#3b82f6' }}>
+      <span className="tag" style={{ backgroundColor }}>
         {fact.category}
       </span>
       <div className="vote-buttons">

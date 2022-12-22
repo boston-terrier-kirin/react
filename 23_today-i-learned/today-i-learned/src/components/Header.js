@@ -1,4 +1,4 @@
-const Header = ({ open, onToggle }) => {
+const Header = ({ showForm, onToggle }) => {
   return (
     <header className="header">
       <div className="logo">
@@ -6,7 +6,7 @@ const Header = ({ open, onToggle }) => {
         <h1>Today I Learned</h1>
       </div>
       <button onClick={onToggle} className="btn btn-large">
-        {open ? 'Close' : 'Share a fact'}
+        {showForm ? 'Close' : 'Share a fact'}
       </button>
     </header>
   );
