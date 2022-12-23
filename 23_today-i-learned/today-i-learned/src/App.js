@@ -61,10 +61,21 @@ const App = () => {
   };
 
   const handleUpdate = async (column, id, votes) => {
-    await supabase
+    const { data } = await supabase
       .from('facts')
       .update({ [column]: votes })
-      .eq('id', id);
+      .eq('id', id)
+      .select('*');
+
+    const updatedFact = data[0];
+    const updatedFacts = facts.map((fact) => {
+      if (fact.id === updatedFact.id) {
+        return updatedFact;
+      }
+      return fact;
+    });
+
+    setFacts(updatedFacts);
   };
 
   return (
