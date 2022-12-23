@@ -19,7 +19,6 @@ const NewFactForm = ({ categories, onSubmit }) => {
     }
 
     const fact = {
-      id: Math.random(),
       text,
       source,
       category,

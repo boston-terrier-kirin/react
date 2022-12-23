@@ -1,7 +1,11 @@
-const FactListItem = ({ fact, categories }) => {
+const FactListItem = ({ fact, categories, onVoteClick }) => {
   const backgroundColor = categories.find(
     (cat) => cat.value === fact.category
   ).color;
+
+  const handleClick = (column, votes) => {
+    onVoteClick(column, fact.id, votes);
+  };
 
   return (
     <li className="fact">
@@ -20,9 +24,25 @@ const FactListItem = ({ fact, categories }) => {
         {fact.category}
       </span>
       <div className="vote-buttons">
-        <button>👍 {fact.votes_interesting}</button>
-        <button>🤯 {fact.votes_mindblowing}</button>
-        <button>⛔️ {fact.votes_false}</button>
+        <button
+          onClick={() =>
+            handleClick('votes_interesting', fact.votes_interesting + 1)
+          }
+        >
+          👍 {fact.votes_interesting}
+        </button>
+        <button
+          onClick={() =>
+            handleClick('votes_mindblowing', fact.votes_mindblowing + 1)
+          }
+        >
+          🤯 {fact.votes_mindblowing}
+        </button>
+        <button
+          onClick={() => handleClick('votes_false', fact.votes_false + 1)}
+        >
+          ⛔️ {fact.votes_false}
+        </button>
       </div>
     </li>
   );

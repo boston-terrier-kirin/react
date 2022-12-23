@@ -5,6 +5,7 @@ import Header from './components/Header';
 import NewFactForm from './components/NewFactForm';
 import CategoryFilter from './components/CategoryFilter';
 import FactList from './components/FactList';
+import Loader from './components/Loader';
 
 const CATEGORIES = [
   { name: 'Technology', value: 'technology', color: '#3b82f6' },
@@ -20,23 +21,50 @@ const CATEGORIES = [
 const App = () => {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState('all');
 
   useEffect(() => {
     const getFacts = async () => {
-      const { data } = await supabase.from('facts').select('*');
+      setLoading(true);
+
+      let query = supabase
+        .from('facts')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (currentCategory !== 'all') {
+        query.eq('category', currentCategory);
+      }
+
+      const { data } = await query;
       setFacts(data);
+
+      setLoading(false);
     };
 
     getFacts();
-  }, []);
+  }, [currentCategory]);
 
   const handleToggle = () => {
     setShowForm((prev) => !prev);
   };
 
-  const handleSubmit = (fact) => {
-    setFacts((prev) => [fact, ...prev]);
+  const handleSubmit = async (fact) => {
+    const { data } = await supabase.from('facts').insert([fact]).select('*');
+    setFacts((prev) => [...data, ...prev]);
+
     handleToggle();
+  };
+
+  const handleFilter = (category) => {
+    setCurrentCategory(category);
+  };
+
+  const handleUpdate = async (column, id, votes) => {
+    await supabase
+      .from('facts')
+      .update({ [column]: votes })
+      .eq('id', id);
   };
 
   return (
@@ -47,10 +75,21 @@ const App = () => {
       )}
       <main className="main">
         <aside>
-          <CategoryFilter categories={CATEGORIES} />
+          <CategoryFilter
+            categories={CATEGORIES}
+            onClickCategory={handleFilter}
+          />
         </aside>
         <section>
-          <FactList facts={facts} categories={CATEGORIES} />
+          {loading ? (
+            <Loader />
+          ) : (
+            <FactList
+              facts={facts}
+              categories={CATEGORIES}
+              onVoteClick={handleUpdate}
+            />
+          )}
         </section>
       </main>
     </div>

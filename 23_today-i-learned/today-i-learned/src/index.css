@@ -274,3 +274,11 @@ h1 {
   width: 100%;
   background-image: none;
 }
+
+.message {
+  font-size: 2rem;
+  line-height: 1.4;
+  background-color: #44403c;
+  padding: 1.6rem 2.4rem;
+  border-radius: 1.6rem;
+}
