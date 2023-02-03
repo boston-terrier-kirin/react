@@ -23,6 +23,7 @@ test('render on row per user', () => {
 
   // tbody -> tr を見つける方法
   {
+    // withinを使うと、rowを探す範囲を、users以下に絞れる。
     const rows = within(screen.getByTestId('users')).getAllByRole('row');
     expect(rows).toHaveLength(2);
   }
