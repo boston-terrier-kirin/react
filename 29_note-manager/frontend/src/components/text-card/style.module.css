@@ -1,0 +1,33 @@
+.container {
+  cursor: pointer;
+  border-radius: 22px;
+  height: 300px;
+  width: 400px;
+  padding: 1rem;
+  box-shadow: 0px 0px 8px -6px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.5s;
+}
+
+.container:hover {
+  border-color: aqua;
+}
+
+.title_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+}
+
+.text_content {
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
