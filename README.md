@@ -12,6 +12,7 @@
 **[`react-toastify`](#react-toastify)**,
 **[`react-moment`](#react-moment)**,
 **[`css-module`](#css-module)**,
+**[`propTypes / defaultProps`](#propTypes / defaultProps)**
 
 ## reduxjs/toolkit
 
