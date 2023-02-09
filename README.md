@@ -19,7 +19,8 @@
 **[`hooks`](#hooks)**,
 **[`uuid`](#uuid)**,
 **[`bootstrap5`](#bootstrap5)**,
-**[`firebase`](#firebase)**
+**[`firebase`](#firebase)**,
+**[`supabase`](#supabase)**
 
 #### projects
 
@@ -519,3 +520,7 @@ uuid();
 ## firebase
 
 - [06_house-marketplace](https://github.com/boston-terrier-kirin/react/tree/main/06_house-marketplace)
+
+## supabase
+
+- [23_today-i-learned](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)
