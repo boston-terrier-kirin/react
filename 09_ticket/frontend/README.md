@@ -60,3 +60,91 @@ const getNotes = async (ticketId, token) => {
   return res.data;
 };
 ```
+
+# PrivateRoute
+
+#### App.js
+
+```javascript
+<Route path="/ticket/:ticketId" element={<PrivateRoute />}>
+  {/* PrivateRoute の Outlet 部分 */}
+  <Route path="/ticket/:ticketId" element={<Ticket />} />
+</Route>
+```
+
+#### PrivateRoute.js
+
+ログインしていない場合は、/login に遷移させる。
+
+```javascript
+const PrivateRoute = () => {
+  const { loggedIn, checkingStatus } = useAuthStatus();
+
+  if (checkingStatus) {
+    return <Spinner />;
+  }
+
+  return loggedIn ? <Outlet /> : <Navigate to="/login" />;
+};
+```
+
+# 複数の state をまとめ更新
+
+#### Login.jsx
+
+```javascript
+function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const onChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+```
+
+# Spinner
+
+#### Spinner.jsx
+
+```javascript
+function Spinner() {
+  return (
+    <div className="loadingSpinnerContainer">
+      <div className="loadingSpinner"></div>
+    </div>
+  );
+}
+
+export default Spinner;
+```
+
+#### index.css
+
+```css
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+```
