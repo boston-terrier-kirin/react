@@ -4,7 +4,7 @@
 
 ## Contents
 
-#### package
+#### packages
 
 **[`reduxjs/toolkit`](#reduxjs/toolkit)**,
 **[`react-router-dom`](#react-router-dom)**,
@@ -16,7 +16,7 @@
 **[`css-module`](#css-module)**,
 **[`propTypes`](#propTypes)**
 
-#### project
+#### projects
 
 **[`04_github-finder_v2`](https://github.com/boston-terrier-kirin/react/tree/main/04_github-finder_v2)**,
 **[`09_ticket`](https://github.com/boston-terrier-kirin/react/tree/main/09_ticket/frontend)**
