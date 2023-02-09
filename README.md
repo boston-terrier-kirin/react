@@ -20,7 +20,9 @@
 **[`uuid`](#uuid)**,
 **[`bootstrap5`](#bootstrap5)**,
 **[`firebase`](#firebase)**,
-**[`supabase`](#supabase)**
+**[`supabase`](#supabase)**,
+**[`stopPropagation`](#stopPropagation)**,
+**[`spinner`](#spinner)**
 
 #### projects
 
@@ -30,7 +32,7 @@
 
 ## reduxjs/toolkit
 
-- [11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
+- [99_misc/11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
 - [28_dayly-news](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news)
 - [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend)
 
@@ -524,3 +526,19 @@ uuid();
 ## supabase
 
 - [23_today-i-learned](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)
+
+## stopPropagation
+
+- [29_notemanager/TextCard.js](https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/components/text-card/TextCard.js)
+
+```javascript
+const handleClickTrash = (event) => {
+  onClickTrash();
+  event.stopPropagation();
+};
+```
+
+## spinner
+
+- [09_ticket/Spinner.jsx](https://github.com/boston-terrier-kirin/react/blob/main/09_ticket/frontend/src/components/Spinner.jsx)
+- [23_today-i-learned/Loader.jsx](https://github.com/boston-terrier-kirin/react/blob/main/23_today-i-learned/today-i-learned/src/components/Loader.js)
