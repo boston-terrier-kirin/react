@@ -4,14 +4,14 @@
 
 ## Contents
 
-**[@reduxjs/toolkit](#@reduxjs/toolkit)**,
+**[reduxjs/toolkit](#reduxjs/toolkit)**,
 **[react-router-dom](#react-router-dom)**,
 **[formik](#formik)**,
 **[react-bootstrap-icons](#react-bootstrap-icons)**,
 **[css-module](#css-module)**,
 **[react-toastify](#react-toastify)**
 
-## @reduxjs/toolkit
+## reduxjs/toolkit
 
 - [11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
 
@@ -23,6 +23,36 @@
 ## formik
 
 - [99_misc/12_formik](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/12_formik)
+
+```javascript
+// フォームの初期値をセットする方法
+const FormThree = () => {
+  const [formData, setFormData] = useState({ firstname: '', lastname: '' });
+
+  const formik = useFormik({
+    initialValues: formData,
+    validate: (values) => {
+        ...
+    },
+    onSubmit: (values) => {
+        ...
+    },
+    enableReinitialize: true, // enableReinitialize=trueにする。
+  });
+
+  useEffect(() => {
+    // setValuesを使うよりも、ステートでやった方が賢い。
+    // formik.setValues({
+    //   firstname: 'kirin',
+    //   lastname: 'matsumoto',
+    // });
+
+    setFormData({
+      firstname: 'kirin',
+      lastname: 'matsumoto',
+    });
+  }, []);
+```
 
 ## react-bootstrap-icons
 
