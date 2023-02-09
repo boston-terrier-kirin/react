@@ -61,3 +61,22 @@ const getUser = useCallback(async (login) => {
       return;
     }
 ```
+
+# Promise.all
+
+#### GithubActions.js
+
+```javascript
+export const getUserAndRepos = async (login) => {
+  // POINT：Promise.all
+  const [user, repos] = await Promise.all([
+    github.get(`/users/${login}`),
+    github.get(`/users/${login}/repos`),
+  ]);
+
+  return {
+    user: user.data,
+    repos: repos.data,
+  };
+};
+```
