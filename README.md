@@ -8,8 +8,10 @@
 **[react-router-dom](#react-router-dom)**,
 **[formik](#formik)**,
 **[react-bootstrap-icons](#react-bootstrap-icons)**,
+**[react-icons](#react-icons)**,
+**[react-toastify](#react-toastify)**,
+**[react-moment](#react-moment)**
 **[css-module](#css-module)**,
-**[react-toastify](#react-toastify)**
 
 ## reduxjs/toolkit
 
@@ -62,10 +64,36 @@ const handleSubmit = async (note) => {
 ## react-router-dom
 
 - [99_misc/09_react-router-6](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/09_react-router-6)
+- [06_house-marketplace](https://github.com/boston-terrier-kirin/react/tree/main/06_house-marketplace)
 - [28_daily-news](https://github.com/boston-terrier-kirin/react/tree/main/28_daily-news)
 - [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend)
 
-#### [App.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/App.js)
+#### [06_house-marketplace/App.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/App.js)
+
+親子関係で PrivateRoute をやっている。
+
+```javascript
+<Route path="/profile" element={<PrivateRoute />}>
+  {/* ここが、PrivateRouteのoutlet部分 */}
+  <Route path="/profile" element={<Profile />} />
+</Route>
+```
+
+#### [06_house-marketplace/PrivateRoute.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/components/PrivateRoute.jsx)
+
+```javascript
+const PrivateRoute = () => {
+  const { loggedIn, checkingStatus } = useAuthStatus();
+
+  if (checkingStatus) {
+    return <Spinner />;
+  }
+
+  return loggedIn ? <Outlet /> : <Navigate to="/sign-in" />;
+};
+```
+
+#### [28_daily-news/App.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/App.js)
 
 ```javascript
 const App = () => {
@@ -84,7 +112,7 @@ const App = () => {
 };
 ```
 
-#### [RootRoute.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/routes/RootRoute.js)
+#### [28_daily-news/RootRoute.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/routes/RootRoute.js)
 
 ```javascript
 const RootRoute = () => {
@@ -182,6 +210,29 @@ const NoteForm = () => {
 }
 ```
 
+## react-icons
+
+- [03_github-finder](https://github.com/boston-terrier-kirin/react/blob/main/03_github-finder)
+
+#### [Navbar.js](https://github.com/boston-terrier-kirin/react/blob/main/03_github-finder/src/components/layout/Navbar.js)
+
+```javascript
+import PropTypes from 'prop-types';
+import { FaGithub } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+function Navbar({ title }) {
+  return (
+    <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
+      <div className="container mx-auto">
+        <div className="flex-none px-2 mx-2">
+          <FaGithub className="inline pr-2 text-3xl" />
+          <Link to="/" className="text-lg font-bold align-middle">
+            {title}
+          </Link>
+        </div>
+```
+
 ## react-toastify
 
 - [99_misc/13_react-toastify](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/13_react-toastify)
@@ -227,11 +278,23 @@ export const showToast = (type, msg) => {
 };
 ```
 
+## react-moment
+
+- [28_daily-news](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news)
+
+#### [Posts.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/components/Posts.js)
+
+```javascript
+import Moment from 'react-moment';
+...
+<Moment format="DD MMMM">{item.createdAt}</Moment>
+```
+
 ## css-module
 
 - [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager)
 
-コンポーネントごとにフォルダを作っておけば Logo.module.css にする必要はなく、module.css になっていれば OK。
+コンポーネントごとにフォルダを作っておけば Logo.module.css にする必要はなく、<br>module.css になっていれば OK。
 
 #### [components/logo/Logo.js](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend/src/components/logo)
 
@@ -284,8 +347,6 @@ export default Logo;
 ## axios
 
 ## boostrap
-
-## react-icons
 
 ## react-modal
 
