@@ -1,12 +1,10 @@
-<!-- https://gist.github.com/bradtraversy/547a7bbf35ffba1561706e161a50b05a -->
-
 # React Cheatsheet
 
 ## Contents
 
 #### packages
 
-**[`reduxjs/toolkit`](#reduxjs/toolkit)**,
+**[`@reduxjs/toolkit`](#@reduxjs/toolkit)**,
 **[`react-router-dom`](#react-router-dom)**,
 **[`formik`](#formik)**,
 **[`react-bootstrap-icons`](#react-bootstrap-icons)**,
@@ -22,7 +20,8 @@
 **[`firebase`](#firebase)**,
 **[`supabase`](#supabase)**,
 **[`stopPropagation`](#stopPropagation)**,
-**[`spinner`](#spinner)**
+**[`spinner`](#spinner)**,
+**[`@uiw/react-md-editor`](#@uiw/react-md-editor)**
 
 #### projects
 
@@ -31,7 +30,7 @@
 **[`19_components_with-router`](https://github.com/boston-terrier-kirin/react/tree/main/19_components_with-router)**
 **[`23_today-i-learned`](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)**
 
-## reduxjs/toolkit
+## @reduxjs/toolkit
 
 - [99_misc/11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
 - [28_dayly-news](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news)
@@ -543,3 +542,7 @@ const handleClickTrash = (event) => {
 
 - [09_ticket/Spinner.jsx](https://github.com/boston-terrier-kirin/react/blob/main/09_ticket/frontend/src/components/Spinner.jsx)
 - [23_today-i-learned/Loader.jsx](https://github.com/boston-terrier-kirin/react/blob/main/23_today-i-learned/today-i-learned/src/components/Loader.js)
+
+## @uiw/react-md-editor
+
+- [99_misc/15_markdown](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/15_markdown)
