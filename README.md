@@ -12,7 +12,7 @@
 **[`react-toastify`](#react-toastify)**,
 **[`react-moment`](#react-moment)**,
 **[`css-module`](#css-module)**,
-**[`propTypes / defaultProps`](#propTypes / defaultProps)**
+**[`propTypes`](#propTypes)**
 
 ## reduxjs/toolkit
 
@@ -352,7 +352,7 @@ export default Logo;
 
 ## react-modal
 
-## propTypes / defaultProps
+## propTypes
 
 - [01_feedback-app](https://github.com/boston-terrier-kirin/react/tree/main/01_feedback-app)
 
