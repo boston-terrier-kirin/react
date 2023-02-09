@@ -29,6 +29,7 @@
 **[`04_github-finder_v2`](https://github.com/boston-terrier-kirin/react/tree/main/04_github-finder_v2)**,
 **[`09_ticket`](https://github.com/boston-terrier-kirin/react/tree/main/09_ticket)**,
 **[`19_components_with-router`](https://github.com/boston-terrier-kirin/react/tree/main/19_components_with-router)**
+**[`23_today-i-learned`](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)**
 
 ## reduxjs/toolkit
 
