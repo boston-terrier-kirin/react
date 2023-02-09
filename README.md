@@ -4,7 +4,7 @@
 
 ## Contents
 
-**[reduxjs/toolkit](#reduxjs/toolkit)**,
+**[`reduxjs/toolkit`](#reduxjs/toolkit)**,
 **[react-router-dom](#react-router-dom)**,
 **[formik](#formik)**,
 **[react-bootstrap-icons](#react-bootstrap-icons)**,
