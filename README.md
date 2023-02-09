@@ -5,17 +5,18 @@
 ## Contents
 
 **[`reduxjs/toolkit`](#reduxjs/toolkit)**,
-**[react-router-dom](#react-router-dom)**,
-**[formik](#formik)**,
-**[react-bootstrap-icons](#react-bootstrap-icons)**,
-**[react-icons](#react-icons)**,
-**[react-toastify](#react-toastify)**,
-**[react-moment](#react-moment)**
-**[css-module](#css-module)**,
+**[`react-router-dom`](#react-router-dom)**,
+**[`formik`](#formik)**,
+**[`react-bootstrap-icons`](#react-bootstrap-icons)**,
+**[`react-icons`](#react-icons)**,
+**[`react-toastify`](#react-toastify)**,
+**[`react-moment`](#react-moment)**,
+**[`css-module`](#css-module)**,
 
 ## reduxjs/toolkit
 
 - [11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
+- [28_dayly-news](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news)
 - [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend)
 
 #### [28_dayly-news/postsThunk.js](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/store/reducers/postsThunk.js)
@@ -350,6 +351,75 @@ export default Logo;
 
 ## react-modal
 
-## propTypes
+## propTypes / defaultProps
 
-## defaultProps
+- [01_feedback-app](https://github.com/boston-terrier-kirin/react/tree/main/01_feedback-app)
+
+#### [Header.js](https://github.com/boston-terrier-kirin/react/blob/main/01_feedback-app/src/components/Header.js)
+
+string
+
+```javascript
+Header.defaultProps = {
+  text: 'Feedback UI',
+};
+
+Header.propTypes = {
+  text: PropTypes.string,
+};
+```
+
+#### [Button.js](https://github.com/boston-terrier-kirin/react/blob/main/01_feedback-app/src/components/shared/Button.js)
+
+PropTypes.node.isRequired
+
+```javascript
+Button.defaultProps = {
+  version: 'primary',
+  type: 'button',
+  isDisabled: false,
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  version: PropTypes.string,
+  type: PropTypes.string,
+  isDisabled: PropTypes.bool,
+};
+```
+
+#### [FeedbackItem.js](https://github.com/boston-terrier-kirin/react/blob/main/01_feedback-app/src/components/FeedbackItem.js)
+
+PropTypes.object.isRequired
+
+```javascript
+FeedbackItem.propTypes = {
+  item: PropTypes.object.isRequired,
+};
+```
+
+#### [FeedbackList.js](https://github.com/boston-terrier-kirin/react/blob/main/01_feedback-app/src/components/FeedbackList.js)
+
+PropTypes.arrayOf / PropTypes.shape
+
+```javascript
+FeedbackList.propTypes = {
+  feedback: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ),
+};
+```
+
+#### [FeedbackStats.js](https://github.com/boston-terrier-kirin/react/blob/main/01_feedback-app/src/components/FeedbackStats.js)
+
+PropTypes.array.isRequired
+
+```javascript
+FeedbackStats.propTypes = {
+  feedback: PropTypes.array.isRequired,
+};
+```
