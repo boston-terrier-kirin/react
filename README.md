@@ -22,7 +22,7 @@
 
 ## formik
 
-- [99_misc/12_formik](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/12_formik)
+- [99_misc/12_formik](https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik/src/components/FormThree.js)
 
 ```javascript
 // フォームの初期値をセットする方法
