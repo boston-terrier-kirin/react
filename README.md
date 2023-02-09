@@ -2,6 +2,15 @@
 
 # React Cheatsheet
 
+## Contents
+
+**[@reduxjs/toolkit](#@reduxjs/toolkit)**,
+**[react-router-dom](#react-router-dom)**,
+**[formik](#formik)**,
+**[react-bootstrap-icons](#react-bootstrap-icons)**,
+**[css-module](#css-module)**,
+**[react-toastify](#react-toastify)**
+
 ## @reduxjs/toolkit
 
 - [11_redux-rtk](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/11_redux-rtk)
@@ -17,7 +26,7 @@
 
 ## react-bootstrap-icons
 
-[29_note-manager](https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/components/note-form/NoteForm.js)
+- [29_note-manager](https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/components/note-form/NoteForm.js)
 
 ```javascript
 import { PencilFill, TrashFill } from 'react-bootstrap-icons';
@@ -83,7 +92,7 @@ export const showToast = (type, msg) => {
 };
 ```
 
-## cssmodule
+## css-module
 
 - [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend/src/components/logo)
 
