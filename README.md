@@ -15,7 +15,11 @@
 **[`react-modal`](#react-modal)**,
 **[`react-moment`](#react-moment)**,
 **[`css-module`](#css-module)**,
-**[`propTypes`](#propTypes)**
+**[`propTypes`](#propTypes)**,
+**[`hooks`](#hooks)**,
+**[`uuid`](#uuid)**,
+**[`bootstrap5`](#bootstrap5)**,
+**[`firebase`](#firebase)**
 
 #### projects
 
@@ -408,12 +412,6 @@ export default Logo;
 }
 ```
 
-## uuid
-
-## axios
-
-## boostrap
-
 ## propTypes
 
 - [01_feedback-app](https://github.com/boston-terrier-kirin/react/tree/main/01_feedback-app)
@@ -486,3 +484,37 @@ FeedbackStats.propTypes = {
   feedback: PropTypes.array.isRequired,
 };
 ```
+
+## hooks
+
+- [05_hooks](https://github.com/boston-terrier-kirin/react/tree/main/05_hooks)
+- 06_house-marketplace
+  - [useAuthStatus.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/hooks/useAuthStatus.js)
+- 08_user-management-ts
+  - [useAllUsers.ts](https://github.com/boston-terrier-kirin/react/blob/main/08_user-management-ts/src/hooks/useAllUsers.ts)
+- 09_ticket
+  - [useAuthStatus.js](https://github.com/boston-terrier-kirin/react/blob/main/09_ticket/frontend/src/hooks/useAuthStatus.js)
+- 15_react18_vs_react17
+  - [useTransition](https://github.com/boston-terrier-kirin/react/blob/main/15_react18_vs_react17/react18/src/components/Transition.tsx)
+  - [useDeferredValue](https://github.com/boston-terrier-kirin/react/blob/main/15_react18_vs_react17/react18/src/components/DeferredValue.tsx)
+- 22_rtk_async_thunk
+  - [useThunk.js](https://github.com/boston-terrier-kirin/react/blob/main/22_rtk_async_thunk/media-client/src/hooks/use-thunk.js)
+- [99_misc/01_custom-hooks](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/01_custom-hooks)
+
+## uuid
+
+いつも忘れる。
+
+```
+import { v4 as uuid } from 'uuid';
+uuid();
+```
+
+## bootstrap5
+
+- [28_daily-news](https://github.com/boston-terrier-kirin/react/tree/main/28_daily-news)
+- [29_note-manager](https://github.com/boston-terrier-kirin/react/tree/main/29_note-manager/frontend)
+
+## firebase
+
+- [06_house-marketplace](https://github.com/boston-terrier-kirin/react/tree/main/06_house-marketplace)
