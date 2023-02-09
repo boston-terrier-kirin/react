@@ -12,6 +12,7 @@
 **[`react-bootstrap-icons`](#react-bootstrap-icons)**,
 **[`react-icons`](#react-icons)**,
 **[`react-toastify`](#react-toastify)**,
+**[`react-modal`](#react-modal)**,
 **[`react-moment`](#react-moment)**,
 **[`css-module`](#css-module)**,
 **[`propTypes`](#propTypes)**
@@ -287,6 +288,62 @@ export const showToast = (type, msg) => {
 };
 ```
 
+## react-modal
+
+- [09_ticket](https://github.com/boston-terrier-kirin/react/tree/main/09_ticket)
+- [99_misc/14_react-modal](https://github.com/boston-terrier-kirin/react/tree/main/99_misc/14_react-modal)
+
+#### [09_ticket/Ticket.jsx](https://github.com/boston-terrier-kirin/react/blob/main/09_ticket/frontend/src/pages/Ticket.jsx)
+
+```javascript
+const customStyles = {
+  content: {
+    width: '600px',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    position: 'relative',
+  },
+};
+
+Modal.setAppElement('#root');
+```
+
+```javascript
+function Ticket() {
+  ...
+
+  <Modal
+    isOpen={modalOpen}
+    onRequestClose={closeModal}
+    style={customStyles}
+    contentLabel="Add Note"
+  >
+    <h2>Add Note</h2>
+    <button className="btn-close" onClick={closeModal}>
+      X
+    </button>
+    <form onSubmit={onNoteSubmit}>
+      <div className="form-group">
+        <textarea
+          name="noteText"
+          id="noteText"
+          className="form-control"
+          placeholder="Note Text"
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+        ></textarea>
+      </div>
+      <div className="form-group">
+        <button className="btn">Submit</button>
+      </div>
+    </form>
+  </Modal>
+```
+
 ## react-moment
 
 - [28_daily-news](https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news)
@@ -356,8 +413,6 @@ export default Logo;
 ## axios
 
 ## boostrap
-
-## react-modal
 
 ## propTypes
 
