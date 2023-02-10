@@ -2,11 +2,11 @@
   "notes": [
     {
       "id": 1,
-      "title": "createAsyncThunk",
+      "title": "createAsyncThunk2",
       "content": "# TESTTEST\n\n#### projects\n\n**[`04_github-finder_v2`](https://github.com/boston-terrier-kirin/react/tree/main/04_github-finder_v2)**,\n**[`09_ticket`](https://github.com/boston-terrier-kirin/react/tree/main/09_ticket)**,\n**[`19_components_with-router`](https://github.com/boston-terrier-kirin/react/tree/main/19_components_with-router)**\n**[`23_today-i-learned`](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)**",
       "tags": "react,javascript",
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/store/reducers/postsThunk.js",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "content": "```javascript\nconst handleSubmit = async (note) => {\n  const updatedNote = await NoteApi.updateById(id, note);\n\n  dispatch(notesActions.updateNote(updatedNote));\n  navigate('/');\n};\n```",
       "tags": "react,javascript,react-router-dom",
       "link": "https://github.com/boston-terrier-kirin/react/tree/main/28_daily-news/frontend/src/store/reducers",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik/src/components/FormThree.js",
       "tags": "react",
       "content": "```javascript\nconst FormThree = () => {\n  const [formData, setFormData] = useState({ firstname: '', lastname: '' });\n\n  const formik = useFormik({\n    initialValues: formData,\n    validate: (values) => {\n        ...\n    },\n    onSubmit: (values) => {\n        ...\n    },\n    enableReinitialize: true, // enableReinitialize=trueにする。\n  });\n\n  useEffect(() => {\n    setFormData({\n      firstname: 'kirin',\n      lastname: 'matsumoto',\n    });\n  }, []);\n```",
-      "favorite": false
+      "favorite": true
     }
   ]
 }

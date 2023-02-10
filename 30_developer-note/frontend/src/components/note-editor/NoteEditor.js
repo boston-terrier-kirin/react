@@ -10,7 +10,6 @@ const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
     title: note?.title || '',
     link: note?.link || '',
     tags: note?.tags || '',
-    // favorite: note?.favorite || false,
   });
 
   const [favorite, setFavorite] = useState(false);
