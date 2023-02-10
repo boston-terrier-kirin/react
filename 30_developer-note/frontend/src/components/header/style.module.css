@@ -1,0 +1,18 @@
+.headerLink {
+  font-family: Coiny;
+  color: var(--color-gray-50);
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.headerLink:hover,
+.headerLink:active {
+  color: var(--color-primary-pink);
+}
+
+.icon {
+  color: var(--color-primary-pink);
+}

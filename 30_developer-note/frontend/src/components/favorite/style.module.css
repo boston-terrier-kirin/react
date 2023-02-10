@@ -1,0 +1,8 @@
+.heart {
+  cursor: pointer;
+}
+
+.favorite {
+  color: var(--color-primary-pink);
+  cursor: pointer;
+}

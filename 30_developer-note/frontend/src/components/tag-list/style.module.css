@@ -1,0 +1,23 @@
+.tagList {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tagListItem {
+  list-style: none;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.tagListItem:hover {
+  transform: scale(1.01);
+}
+
+.tagListItem:active {
+  transform: scale(1);
+}
