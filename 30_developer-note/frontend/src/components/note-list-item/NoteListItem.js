@@ -7,7 +7,7 @@ import Favorite from '../favorite/Favorite';
 import style from './style.module.css';
 import { deleteNote, updateNote } from '../../store/note/noteThunk';
 
-const NoteListItem = ({ note }) => {
+const NoteListItem = ({ note, tagColorMap }) => {
   const dispatch = useDispatch();
 
   const handleClickFavorite = (note) => {
@@ -44,7 +44,7 @@ const NoteListItem = ({ note }) => {
       </Link>
 
       <div className="ms-auto">
-        <Tag tags={note.tags} />
+        <Tag tags={note.tags} tagColorMap={tagColorMap} />
       </div>
 
       <BsTrashFill

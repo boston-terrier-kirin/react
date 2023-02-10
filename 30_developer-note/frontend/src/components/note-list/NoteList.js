@@ -1,9 +1,9 @@
 import style from './style.module.css';
 import NoteListItem from '../note-list-item/NoteListItem';
 
-const NoteList = ({ noteList }) => {
+const NoteList = ({ noteList, tagColorMap }) => {
   const rowsToRender = noteList.map((note) => {
-    return <NoteListItem key={note.id} note={note} />;
+    return <NoteListItem key={note.id} note={note} tagColorMap={tagColorMap} />;
   });
 
   return (

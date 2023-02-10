@@ -37,3 +37,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.tagListItemAll {
+  color: var(--color-primaryp-dark);
+  background-color: #fff;
+  border: 1px solid var(--color-primary);
+}
+
+.tagListItemFavorite {
+  color: var(--color-primaryp-dark);
+  background-color: #fff;
+  border: 1px solid var(--color-primary-pink);
+}
+
+.favorite {
+  color: var(--color-primary-pink);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.favorite:hover {
+  transform: scale(0.95);
+}

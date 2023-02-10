@@ -47,6 +47,4 @@ body {
   font-size: 14px;
   padding: 3px 1rem 4px 1rem;
   border-radius: 5rem;
-  background-color: var(--color-primary);
-  color: var(--color-gray-50);
 }
