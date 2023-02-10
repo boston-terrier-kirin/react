@@ -14,7 +14,7 @@
       "content": "```javascript\nconst handleSubmit = async (note) => {\n  const updatedNote = await NoteApi.updateById(id, note);\n\n  dispatch(notesActions.updateNote(updatedNote));\n  navigate('/');\n};\n```",
       "tags": "react,javascript,react-router-dom",
       "link": "https://github.com/boston-terrier-kirin/react/tree/main/28_daily-news/frontend/src/store/reducers",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 3,
@@ -23,6 +23,30 @@
       "tags": "react",
       "content": "```javascript\nconst FormThree = () => {\n  const [formData, setFormData] = useState({ firstname: '', lastname: '' });\n\n  const formik = useFormik({\n    initialValues: formData,\n    validate: (values) => {\n        ...\n    },\n    onSubmit: (values) => {\n        ...\n    },\n    enableReinitialize: true, // enableReinitialize=trueにする。\n  });\n\n  useEffect(() => {\n    setFormData({\n      firstname: 'kirin',\n      lastname: 'matsumoto',\n    });\n  }, []);\n```",
       "favorite": true
+    },
+    {
+      "id": 4,
+      "title": "test",
+      "link": "",
+      "tags": "angular",
+      "content": "",
+      "favorite": false
+    },
+    {
+      "id": 5,
+      "title": "test",
+      "link": "",
+      "tags": "vue",
+      "content": "",
+      "favorite": false
+    },
+    {
+      "id": 6,
+      "title": "test",
+      "link": "",
+      "tags": "vue",
+      "content": "",
+      "favorite": false
     }
   ]
 }

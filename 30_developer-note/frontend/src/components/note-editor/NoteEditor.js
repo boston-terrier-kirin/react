@@ -12,7 +12,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
     tags: note?.tags || '',
   });
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(note?.favorite || false);
   const [content, setContent] = useState(note?.content || '');
 
   const handleChange = (event) => {
