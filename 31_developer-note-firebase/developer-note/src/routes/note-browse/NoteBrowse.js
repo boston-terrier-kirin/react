@@ -36,7 +36,6 @@ const NoteBrowse = () => {
   });
 
   useEffect(() => {
-    console.log('useEffect');
     dispatch(getNoteList());
   }, [dispatch]);
 

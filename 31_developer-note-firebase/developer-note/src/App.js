@@ -8,6 +8,7 @@ import NoteBrowse from './routes/note-browse/NoteBrowse';
 import Note from './routes/note/Note';
 import NoteCreate from './routes/note-create/NoteCreate';
 import SignIn from './routes/sign-in/SignIn';
+import ProtectedRoute from './routes/protected-route/ProtectedRoute';
 
 function App() {
   return (
@@ -15,10 +16,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RootRoute />}>
-            <Route path="/" element={<NoteBrowse />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/note/:id" element={<Note />} />
-            <Route path="/note/new" element={<NoteCreate />} />
+            <Route path="/" element={<ProtectedRoute />}>
+              <Route path="/" element={<NoteBrowse />} />
+            </Route>
+            <Route path="/note/:id" element={<ProtectedRoute />}>
+              <Route path="/note/:id" element={<Note />} />
+            </Route>
+            <Route path="/note/new" element={<ProtectedRoute />}>
+              <Route path="/note/new" element={<NoteCreate />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

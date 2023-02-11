@@ -47,7 +47,7 @@ const noteSlice = createSlice({
       .addCase(createNote.fulfilled, (state, action) => {
         state.isLoading = false;
 
-        // /notes/new -> / に遷移して、NoteBrowseが再レンダリングされるので不要。
+        // /notes/new -> / に遷移して、NoteBrowseが再レンダリングされて、getNoteListが呼ばれるので、不要。
         // state.noteList.push(action.payload);
       })
       .addCase(createNote.rejected, (state, action) => {
@@ -61,12 +61,13 @@ const noteSlice = createSlice({
       .addCase(updateNote.fulfilled, (state, action) => {
         state.isLoading = false;
 
-        // /notes/new -> / に遷移して、NoteBrowseが再レンダリングされるので不要。
-        // state.note = action.payload;
-        // const idx = state.noteList.findIndex((note) => {
-        //   return note.id === parseInt(action.payload.id);
-        // });
-        // state.noteList[idx] = action.payload;
+        // / で favoriteをクリックした場合は、/ -> / なので、NoteBrowseが再レンダリングされない。
+        // stateを手動で更新する必要あり。
+        state.note = action.payload;
+        const idx = state.noteList.findIndex((note) => {
+          return note.id === parseInt(action.payload.id);
+        });
+        state.noteList[idx] = action.payload;
       })
       .addCase(updateNote.rejected, (state, action) => {
         state.isLoading = false;

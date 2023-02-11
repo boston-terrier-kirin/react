@@ -18,8 +18,6 @@ export const getNoteList = createAsyncThunk('note/getNoteList', async () => {
     const q = query(notesRef);
     const querySnap = await getDocs(q);
 
-    console.log('★getNoteList');
-
     const notes = [];
     querySnap.forEach((doc) => {
       notes.push({

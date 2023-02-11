@@ -46,7 +46,9 @@ const noteSlice = createSlice({
       })
       .addCase(createNote.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.noteList.push(action.payload);
+
+        // /notes/new -> / に遷移して、NoteBrowseが再レンダリングされて、getNoteListが呼ばれるので、不要。
+        // state.noteList.push(action.payload);
       })
       .addCase(createNote.rejected, (state, action) => {
         state.isLoading = false;
@@ -58,6 +60,15 @@ const noteSlice = createSlice({
       })
       .addCase(updateNote.fulfilled, (state, action) => {
         state.isLoading = false;
+
+        // / で favoriteをクリックした場合は、/ -> / なので、NoteBrowseが再レンダリングされない。
+        // stateを手動で更新する必要あり。
+        state.note = action.payload;
+        const idx = state.noteList.findIndex((note) => {
+          return note.id === action.payload.id;
+        });
+
+        state.noteList[idx] = action.payload;
       })
       .addCase(updateNote.rejected, (state, action) => {
         state.isLoading = false;
@@ -70,14 +81,13 @@ const noteSlice = createSlice({
       .addCase(deleteNote.fulfilled, (state, action) => {
         state.isLoading = false;
 
-        // // POINT: action.payload は、thunkからの戻り値になっている。
-        // // deleteの時はaxiosから何も返ってこないので、thunk側でidを戻すようにする。
+        // POINT: action.payload は、thunkからの戻り値になっている。
+        // deleteの時はaxiosから何も返ってこないので、thunk側でidを戻すようにする。
+        const updatedNote = state.noteList.filter((note) => {
+          return note.id !== action.payload;
+        });
 
-        // const updatedNote = state.noteList.filter((note) => {
-        //   return note.id !== action.payload;
-        // });
-
-        // state.noteList = updatedNote;
+        state.noteList = updatedNote;
       })
       .addCase(deleteNote.rejected, (state, action) => {
         state.isLoading = false;

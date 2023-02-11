@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { BsLink45Deg, BsTrashFill } from 'react-icons/bs';
 
@@ -9,7 +9,6 @@ import { deleteNote, updateNote } from '../../store/note/noteThunk';
 
 const NoteListItem = ({ note, tagColorMap }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleClickFavorite = (note) => {
     dispatch(
@@ -18,8 +17,6 @@ const NoteListItem = ({ note, tagColorMap }) => {
         favorite: !note.favorite,
       })
     );
-
-    navigate('/');
   };
 
   const handleClickDelete = (note) => {
