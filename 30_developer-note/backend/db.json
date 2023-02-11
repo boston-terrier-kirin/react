@@ -2,35 +2,11 @@
   "notes": [
     {
       "id": 1,
-      "title": "1",
+      "title": "aaaaa",
       "link": "",
-      "tags": "",
+      "tags": "react",
       "content": "",
-      "favorite": false
-    },
-    {
-      "id": 2,
-      "title": "dddddddd",
-      "link": "",
-      "tags": "",
-      "content": "",
-      "favorite": false
-    },
-    {
-      "id": 3,
-      "title": "d",
-      "link": "",
-      "tags": "",
-      "content": "",
-      "favorite": false
-    },
-    {
-      "id": 4,
-      "title": "d",
-      "link": "",
-      "tags": "",
-      "content": "",
-      "favorite": false
+      "favorite": true
     }
   ]
 }
