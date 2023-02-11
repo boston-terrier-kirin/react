@@ -1,4 +1,4 @@
-export function computeTagColor(noteList, colorMap) {
+export function computeTagColor(noteList, colorMap, definedColors) {
   // map[key:tag, value:cnt]
   const map = new Map();
   for (const note of noteList) {
@@ -36,14 +36,16 @@ export function computeTagColor(noteList, colorMap) {
   //   javascript: {backgroundColor:'#16a34a', color:'#f9fafb', cnt:3 }
   // }
   const tagColorMap = {};
-
   for (const [index, tag] of tagRank.entries()) {
     tagColorMap[tag[0]] = {
       backgroundColor:
-        index < 10
+        index < definedColors
           ? colorMap[index].backgroundColor
-          : colorMap[10].backgroundColor,
-      color: index < 10 ? colorMap[index].color : colorMap[10].color,
+          : colorMap[definedColors].backgroundColor,
+      color:
+        index < definedColors
+          ? colorMap[index].color
+          : colorMap[definedColors].color,
       cnt: tag[1],
     };
   }

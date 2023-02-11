@@ -3,6 +3,8 @@ import MDEditor from '@uiw/react-md-editor';
 import { BsLink45Deg } from 'react-icons/bs';
 
 import style from './style.module.css';
+import { useAuthStatus } from '../../hooks/useAuthStatus';
+import Spinner from '../spinner/Spinner';
 
 const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
   const [formData, setFormData] = useState({
@@ -16,6 +18,8 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
   const [content, setContent] = useState(note?.content || '');
   const [isEditable, setIsEditable] = useState(defaultEditable);
 
+  const { loggedIn, checkingStatus } = useAuthStatus();
+
   const handleChange = (event) => {
     setFormData((prev) => ({
       ...prev,
@@ -28,13 +32,19 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
     onSubmit({ ...formData, content, favorite });
   };
 
+  if (checkingStatus) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <form>
-        <div className="text-end mb-2">
-          <button className="btn btn-primary me-2" onClick={handleSubmit}>
-            Submit
-          </button>
+        <div className="text-end mb-3">
+          {loggedIn && (
+            <button className="btn btn-primary me-2" onClick={handleSubmit}>
+              Submit
+            </button>
+          )}
           {!isEditable && (
             <button className="btn btn-secondary" onClick={onCancel}>
               Back

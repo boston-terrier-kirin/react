@@ -15,8 +15,6 @@ const Newsletter = () => {
     dispatch(addToNewsletter(email))
       .unwrap()
       .then((res) => {
-        console.log(res);
-
         if (res.newsletter === 'added') {
           showToast('SUCCESS', 'Thank you for subscribe');
           setEmail('');

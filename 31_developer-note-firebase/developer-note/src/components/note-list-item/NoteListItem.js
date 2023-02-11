@@ -6,9 +6,11 @@ import Tag from '../tag/Tag';
 import Favorite from '../favorite/Favorite';
 import style from './style.module.css';
 import { deleteNote, updateNote } from '../../store/note/noteThunk';
+import { useAuthStatus } from '../../hooks/useAuthStatus';
 
 const NoteListItem = ({ note, tagColorMap }) => {
   const dispatch = useDispatch();
+  const { checkingStatus } = useAuthStatus();
 
   const handleClickFavorite = (note) => {
     dispatch(
@@ -47,11 +49,13 @@ const NoteListItem = ({ note, tagColorMap }) => {
         <Tag tags={note.tags} tagColorMap={tagColorMap} />
       </div>
 
-      <BsTrashFill
-        size={20}
-        className={style.delete}
-        onClick={() => handleClickDelete(note)}
-      />
+      {checkingStatus && (
+        <BsTrashFill
+          size={20}
+          className={style.delete}
+          onClick={() => handleClickDelete(note)}
+        />
+      )}
     </li>
   );
 };

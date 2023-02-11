@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getNote, updateNote } from '../../store/note/noteThunk';
 import NoteEditor from '../../components/note-editor/NoteEditor';
+import { showSuccessMessage } from '../../utils/message';
 
 const Note = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Note = () => {
 
   const handleSubmit = (data) => {
     dispatch(updateNote(data));
+    showSuccessMessage('Note Updated');
     navigate('/');
   };
 

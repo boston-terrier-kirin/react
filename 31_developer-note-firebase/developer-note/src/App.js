@@ -17,12 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<RootRoute />}>
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/" element={<ProtectedRoute />}>
-              <Route path="/" element={<NoteBrowse />} />
-            </Route>
-            <Route path="/note/:id" element={<ProtectedRoute />}>
-              <Route path="/note/:id" element={<Note />} />
-            </Route>
+            <Route path="/" element={<NoteBrowse />} />
+            <Route path="/note/:id" element={<Note />} />
             <Route path="/note/new" element={<ProtectedRoute />}>
               <Route path="/note/new" element={<NoteCreate />} />
             </Route>
