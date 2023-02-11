@@ -2,89 +2,89 @@
   "notes": [
     {
       "id": 1,
-      "title": "createAsyncThunk2",
-      "content": "# TESTTEST\n\n#### projects\n\n**[`04_github-finder_v2`](https://github.com/boston-terrier-kirin/react/tree/main/04_github-finder_v2)**,\n**[`09_ticket`](https://github.com/boston-terrier-kirin/react/tree/main/09_ticket)**,\n**[`19_components_with-router`](https://github.com/boston-terrier-kirin/react/tree/main/19_components_with-router)**\n**[`23_today-i-learned`](https://github.com/boston-terrier-kirin/react/tree/main/23_today-i-learned)**",
-      "tags": "react,javascript",
+      "title": "createAsyncThunk ",
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/store/reducers/postsThunk.js",
-      "favorite": true
+      "tags": "@reduxjs/toolkit,react",
+      "content": "```javascript\nexport const fetchPosts = createAsyncThunk(\n  'posts/fetchPosts',\n  async ({ page = 1, order = 'asc', limit = 10 }, thunkAPI) => {\n    try {\n      const res = await axios.get(\n        `${API_URL}/posts?_page=${page}&_limit=${limit}&_order=${order}&_sort=id`\n      );\n\n      const data = res.data;\n\n      // thunkAPIで今のステートをGETできる。\n      const prevState = thunkAPI.getState().posts;\n\n      return {\n        items: [...prevState.articles.items, ...data],\n        page,\n        end: data.length === 0 ? true : false,\n      };\n    } catch (err) {\n      throw err;\n    }\n  }\n);\n```",
+      "favorite": false
     },
     {
       "id": 2,
-      "title": "thunk を使わずに、コンポーネント側で api リクエスト",
+      "title": "thunk を使わずに、コンポーネント側で api リクエストする",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/pages/note/Note.js",
+      "tags": "@reduxjs/toolkit,react",
       "content": "```javascript\nconst handleSubmit = async (note) => {\n  const updatedNote = await NoteApi.updateById(id, note);\n\n  dispatch(notesActions.updateNote(updatedNote));\n  navigate('/');\n};\n```",
-      "tags": "react,javascript,react-router-dom",
-      "link": "https://github.com/boston-terrier-kirin/react/tree/main/28_daily-news/frontend/src/store/reducers",
       "favorite": false
     },
     {
       "id": 3,
-      "title": "フォームの初期値をセットする方法",
-      "link": "https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik/src/components/FormThree.js",
-      "tags": "react",
-      "content": "```javascript\nconst FormThree = () => {\n  const [formData, setFormData] = useState({ firstname: '', lastname: '' });\n\n  const formik = useFormik({\n    initialValues: formData,\n    validate: (values) => {\n        ...\n    },\n    onSubmit: (values) => {\n        ...\n    },\n    enableReinitialize: true, // enableReinitialize=trueにする。\n  });\n\n  useEffect(() => {\n    setFormData({\n      firstname: 'kirin',\n      lastname: 'matsumoto',\n    });\n  }, []);\n```",
-      "favorite": true
+      "title": "親子関係で PrivateRoute をやる",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/App.js",
+      "tags": "react-router-dom,react",
+      "content": "#### [06_house-marketplace/App.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/App.js)\n\n親子関係で PrivateRoute をやっている。\n\n```javascript\n<Route path=\"/profile\" element={<PrivateRoute />}>\n  {/* ここが、PrivateRouteのoutlet部分 */}\n  <Route path=\"/profile\" element={<Profile />} />\n</Route>\n```\n\n#### [06_house-marketplace/PrivateRoute.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/components/PrivateRoute.jsx)\n\n```javascript\nconst PrivateRoute = () => {\n  const { loggedIn, checkingStatus } = useAuthStatus();\n\n  if (checkingStatus) {\n    return <Spinner />;\n  }\n\n  return loggedIn ? <Outlet /> : <Navigate to=\"/sign-in\" />;\n};\n```",
+      "favorite": false
     },
     {
       "id": 4,
-      "title": "test",
-      "link": "",
-      "tags": "angular",
-      "content": "",
-      "favorite": false
-    },
-    {
-      "id": 5,
-      "title": "test",
-      "link": "",
-      "tags": "vue",
-      "content": "",
-      "favorite": false
+      "title": "フォームの初期値をセットする方法",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik",
+      "tags": "formik",
+      "content": "```javascript\nconst FormThree = () => {\n  const [formData, setFormData] = useState({ firstname: '', lastname: '' });\n\n  const formik = useFormik({\n    initialValues: formData,\n    validate: (values) => {\n        ...\n    },\n    onSubmit: (values) => {\n        ...\n    },\n    enableReinitialize: true, // enableReinitialize=trueにする。\n  });\n\n  useEffect(() => {\n    // setValuesを使うよりも、ステートでやった方が賢い。\n    // formik.setValues({\n    //   firstname: 'kirin',\n    //   lastname: 'matsumoto',\n    // });\n\n    setFormData({\n      firstname: 'kirin',\n      lastname: 'matsumoto',\n    });\n  }, []);\n```",
+      "favorite": true
     },
     {
       "id": 6,
-      "title": "test",
-      "link": "",
-      "tags": "vue",
-      "content": "",
+      "title": "...formik.getFieldProps('firstname')}で、onChange, onBlur, value, name をまとめて指定する",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik",
+      "tags": "formik",
+      "content": "#### [FormThree.js](https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik/src/components/FormThree.js)\n\n```javascript\n<div className=\"col-md-6 mb-3\">\n  <label htmlFor=\"firstname\">First name</label>\n  <input\n    type=\"text\"\n    className=\"form-control\"\n    id=\"firstname\"\n    {...formik.getFieldProps('firstname')}\n  />\n\n  {/* touchedを見ないと、firstnameのエラーも、lastnameのエラーも両方表示されてしまう。 */}\n  {formik.errors.firstname && formik.touched.firstname && (\n    <div>{formik.errors.firstname}</div>\n  )}\n</div>\n```",
       "favorite": false
     },
     {
       "id": 7,
+      "title": "react-bootstrap-icons",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager",
+      "tags": "react-bootstrap-icons",
+      "content": "#### [NoteForm.js](https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/components/note-form/NoteForm.js)\n\n```javascript\nimport { PencilFill, TrashFill } from 'react-bootstrap-icons';\n\nconst NoteForm = () => {\n  ...\n\n  const actionIcons = (\n    <>\n      <div className=\"col-1\">\n        {onClickEdit && (\n          <PencilFill className={style.icon} onClick={onClickEdit} />\n        )}\n      </div>\n      <div className=\"col-1\">\n        {onClickDelete && (\n          <TrashFill className={style.icon} onClick={onClickDelete} />\n        )}\n      </div>\n    </>\n  );\n}\n```",
+      "favorite": false
+    },
+    {
+      "id": 8,
+      "title": "react-icons",
+      "link": "https://github.com/boston-terrier-kirin/react/blob/main/03_github-finder",
+      "tags": "react-icons",
+      "content": "#### [Navbar.js](https://github.com/boston-terrier-kirin/react/blob/main/03_github-finder/src/components/layout/Navbar.js)\n\n```javascript\nimport PropTypes from 'prop-types';\nimport { FaGithub } from 'react-icons/fa';\nimport { Link } from 'react-router-dom';\n\nfunction Navbar({ title }) {\n  return (\n    <nav className=\"navbar mb-12 shadow-lg bg-neutral text-neutral-content\">\n      <div className=\"container mx-auto\">\n        <div className=\"flex-none px-2 mx-2\">\n          <FaGithub className=\"inline pr-2 text-3xl\" />\n          <Link to=\"/\" className=\"text-lg font-bold align-middle\">\n            {title}\n          </Link>\n        </div>\n```",
+      "favorite": false
+    },
+    {
+      "id": 9,
       "title": "test",
+      "link": "",
+      "tags": "jest",
+      "content": "",
+      "favorite": false
+    },
+    {
+      "id": 10,
+      "title": "test",
+      "link": "",
+      "tags": "react-testing-tool",
+      "content": "",
+      "favorite": false
+    },
+    {
+      "id": 11,
+      "title": "python",
       "link": "",
       "tags": "python",
       "content": "",
       "favorite": false
     },
     {
-      "id": 11,
-      "title": "",
-      "link": "",
-      "tags": "test",
-      "content": "",
-      "favorite": false
-    },
-    {
       "id": 12,
-      "title": "",
+      "title": "test",
       "link": "",
-      "tags": "php,django",
-      "content": "",
-      "favorite": false
-    },
-    {
-      "id": 13,
-      "title": "",
-      "link": "",
-      "tags": "mysql",
-      "content": "",
-      "favorite": false
-    },
-    {
-      "id": 14,
-      "title": "",
-      "link": "",
-      "tags": "mysql",
+      "tags": "pytorch",
       "content": "",
       "favorite": false
     }

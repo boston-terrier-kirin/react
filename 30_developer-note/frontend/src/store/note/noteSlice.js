@@ -45,8 +45,6 @@ const noteSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(createNote.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.isLoading = false;
         state.noteList.push(action.payload);
       })

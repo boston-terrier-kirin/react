@@ -3,8 +3,8 @@ const Tag = ({ tags, tagColorMap }) => {
     const attr = tagColorMap[tag];
 
     const color = {
-      color: attr.color,
-      backgroundColor: attr.backgroundColor,
+      color: attr?.color,
+      backgroundColor: attr?.backgroundColor,
     };
 
     return (

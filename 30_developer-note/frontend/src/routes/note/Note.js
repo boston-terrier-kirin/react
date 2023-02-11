@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getNote, updateNote } from '../../store/note/noteThunk';
@@ -9,7 +9,6 @@ const Note = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [isEditable, setIsEditable] = useState(false);
   const { note, isLoading } = useSelector((state) => state.note);
 
   useEffect(() => {
@@ -29,18 +28,13 @@ const Note = () => {
     navigate('/');
   };
 
-  const handleClickEdit = () => {
-    setIsEditable(!isEditable);
-  };
-
   return (
     <>
       <NoteEditor
         note={note}
-        isEditable={isEditable}
         onSubmit={handleSubmit}
         onCancel={handleCancel}
-        onClickEdit={handleClickEdit}
+        defaultEditable={false}
       />
     </>
   );

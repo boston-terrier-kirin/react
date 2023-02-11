@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import NoteEditor from '../../components/note-editor/NoteEditor';
@@ -8,15 +7,9 @@ const NoteCreate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [isEditable, setIsEditable] = useState(true);
-
   const handleSubmit = (data) => {
     dispatch(createNote(data));
     navigate('/');
-  };
-
-  const handleClickEdit = () => {
-    setIsEditable(!isEditable);
   };
 
   const handleCancel = () => {
@@ -26,10 +19,9 @@ const NoteCreate = () => {
   return (
     <>
       <NoteEditor
-        isEditable={isEditable}
         onSubmit={handleSubmit}
         onCancel={handleCancel}
-        onClickEdit={handleClickEdit}
+        defaultEditable={true}
       />
     </>
   );

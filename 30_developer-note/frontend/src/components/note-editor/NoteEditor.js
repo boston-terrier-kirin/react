@@ -4,7 +4,7 @@ import { BsLink45Deg } from 'react-icons/bs';
 
 import style from './style.module.css';
 
-const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
+const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
   const [formData, setFormData] = useState({
     id: note?.id || '',
     title: note?.title || '',
@@ -14,6 +14,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
 
   const [favorite, setFavorite] = useState(note?.favorite || false);
   const [content, setContent] = useState(note?.content || '');
+  const [isEditable, setIsEditable] = useState(defaultEditable);
 
   const handleChange = (event) => {
     setFormData((prev) => ({
@@ -34,9 +35,11 @@ const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
           <button className="btn btn-primary me-2" onClick={handleSubmit}>
             Submit
           </button>
-          <button className="btn btn-secondary" onClick={onCancel}>
-            Back
-          </button>
+          {!isEditable && (
+            <button className="btn btn-secondary" onClick={onCancel}>
+              Back
+            </button>
+          )}
         </div>
 
         <div className={`${style.item} mb-3`}>
@@ -107,7 +110,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, onClickEdit, isEditable }) => {
               className="form-check-input"
               type="checkbox"
               checked={isEditable}
-              onClick={onClickEdit}
+              onChange={() => setIsEditable(!isEditable)}
             />
           </div>
 
