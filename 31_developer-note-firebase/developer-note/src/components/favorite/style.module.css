@@ -1,0 +1,19 @@
+.heart {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.heart:hover {
+  transform: scale(1.1);
+  color: var(--color-primary-pink);
+}
+
+.favorite {
+  color: var(--color-primary-pink);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.favorite:hover {
+  transform: scale(0.95);
+}
