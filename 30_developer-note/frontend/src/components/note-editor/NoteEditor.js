@@ -42,19 +42,44 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
           )}
         </div>
 
-        <div className={`${style.item} mb-3`}>
-          <label className="form-label">Title</label>
-          <input
-            type="text"
-            name="title"
-            className="form-control"
-            value={formData.title}
-            onChange={handleChange}
-          />
+        <div className="d-flex gap-3 mb-3">
+          <div className={`${style.item} flex-grow-1`}>
+            <label>Title</label>
+            <input
+              type="text"
+              name="title"
+              className="form-control"
+              value={formData.title}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={`${style.item} flex-grow-1`}>
+            <label>Tags</label>
+            <input
+              type="text"
+              name="tags"
+              className="form-control"
+              value={formData.tags}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={`${style.item}`}>
+            <label>Favorite</label>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="favorite"
+                name="favorite"
+                checked={favorite}
+                onChange={() => setFavorite((prev) => !prev)}
+              />
+            </div>
+          </div>
         </div>
 
         <div className={`${style.item} mb-3`}>
-          <div className="d-flex align-items-center gap-1 form-label">
+          <div className="d-flex align-items-center gap-1">
             <label>Link</label>
 
             {formData.link && (
@@ -76,31 +101,6 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
             value={formData.link}
             onChange={handleChange}
           />
-        </div>
-
-        <div className={`${style.item} mb-3`}>
-          <label className="form-label">Tags</label>
-          <input
-            type="text"
-            name="tags"
-            className="form-control"
-            value={formData.tags}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={`${style.item} mb-3`}>
-          <label>Favorite</label>
-          <div className="form-check form-switch">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="favorite"
-              name="favorite"
-              checked={favorite}
-              onChange={() => setFavorite((prev) => !prev)}
-            />
-          </div>
         </div>
 
         <div className={`${style.content} mb-3`}>

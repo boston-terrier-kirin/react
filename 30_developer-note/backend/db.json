@@ -6,7 +6,7 @@
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/28_daily-news/frontend/src/store/reducers/postsThunk.js",
       "tags": "@reduxjs/toolkit,react",
       "content": "```javascript\nexport const fetchPosts = createAsyncThunk(\n  'posts/fetchPosts',\n  async ({ page = 1, order = 'asc', limit = 10 }, thunkAPI) => {\n    try {\n      const res = await axios.get(\n        `${API_URL}/posts?_page=${page}&_limit=${limit}&_order=${order}&_sort=id`\n      );\n\n      const data = res.data;\n\n      // thunkAPIで今のステートをGETできる。\n      const prevState = thunkAPI.getState().posts;\n\n      return {\n        items: [...prevState.articles.items, ...data],\n        page,\n        end: data.length === 0 ? true : false,\n      };\n    } catch (err) {\n      throw err;\n    }\n  }\n);\n```",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/29_note-manager/frontend/src/pages/note/Note.js",
       "tags": "@reduxjs/toolkit,react",
       "content": "```javascript\nconst handleSubmit = async (note) => {\n  const updatedNote = await NoteApi.updateById(id, note);\n\n  dispatch(notesActions.updateNote(updatedNote));\n  navigate('/');\n};\n```",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/App.js",
       "tags": "react-router-dom,react",
       "content": "#### [06_house-marketplace/App.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/App.js)\n\n親子関係で PrivateRoute をやっている。\n\n```javascript\n<Route path=\"/profile\" element={<PrivateRoute />}>\n  {/* ここが、PrivateRouteのoutlet部分 */}\n  <Route path=\"/profile\" element={<Profile />} />\n</Route>\n```\n\n#### [06_house-marketplace/PrivateRoute.js](https://github.com/boston-terrier-kirin/react/blob/main/06_house-marketplace/src/components/PrivateRoute.jsx)\n\n```javascript\nconst PrivateRoute = () => {\n  const { loggedIn, checkingStatus } = useAuthStatus();\n\n  if (checkingStatus) {\n    return <Spinner />;\n  }\n\n  return loggedIn ? <Outlet /> : <Navigate to=\"/sign-in\" />;\n};\n```",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "link": "https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik",
       "tags": "formik",
       "content": "#### [FormThree.js](https://github.com/boston-terrier-kirin/react/blob/main/99_misc/12_formik/src/components/FormThree.js)\n\n```javascript\n<div className=\"col-md-6 mb-3\">\n  <label htmlFor=\"firstname\">First name</label>\n  <input\n    type=\"text\"\n    className=\"form-control\"\n    id=\"firstname\"\n    {...formik.getFieldProps('firstname')}\n  />\n\n  {/* touchedを見ないと、firstnameのエラーも、lastnameのエラーも両方表示されてしまう。 */}\n  {formik.errors.firstname && formik.touched.firstname && (\n    <div>{formik.errors.firstname}</div>\n  )}\n</div>\n```",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 7,

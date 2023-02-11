@@ -9,7 +9,7 @@ const RootRoute = () => {
       <div className={`container-fluid ${style.header}`}>
         <Header />
       </div>
-      <div className="container">
+      <div className="container-xxl">
         <Outlet />
       </div>
     </>
