@@ -10,7 +10,7 @@ import { useAuthStatus } from '../../hooks/useAuthStatus';
 
 const NoteListItem = ({ note, tagColorMap }) => {
   const dispatch = useDispatch();
-  const { checkingStatus } = useAuthStatus();
+  const { loggedIn } = useAuthStatus();
 
   const handleClickFavorite = (note) => {
     dispatch(
@@ -53,7 +53,7 @@ const NoteListItem = ({ note, tagColorMap }) => {
         <Tag tags={note.tags} tagColorMap={tagColorMap} />
       </div>
 
-      {checkingStatus && (
+      {loggedIn && (
         <BsTrashFill
           size={20}
           className={style.delete}
