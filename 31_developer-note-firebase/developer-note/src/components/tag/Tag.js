@@ -5,6 +5,7 @@ const Tag = ({ tags, tagColorMap }) => {
     const color = {
       color: attr?.color,
       backgroundColor: attr?.backgroundColor,
+      border: attr.border,
     };
 
     return (

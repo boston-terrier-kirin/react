@@ -13,8 +13,13 @@ const noteSlice = createSlice({
     isLoading: false,
     noteList: [],
     note: null,
+    filterTag: '',
   },
-  reducers: {},
+  reducers: {
+    setFilterTag: (state, action) => {
+      state.filterTag = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getNoteList.pending, (state) => {

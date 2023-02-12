@@ -46,6 +46,10 @@ export function computeTagColor(noteList, colorMap, definedColors) {
         index < definedColors
           ? colorMap[index].color
           : colorMap[definedColors].color,
+      border:
+        index < definedColors
+          ? colorMap[index].border
+          : colorMap[definedColors].border,
       cnt: tag[1],
     };
   }

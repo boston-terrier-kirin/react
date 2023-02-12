@@ -18,12 +18,13 @@
   transition: all 0.3s;
 }
 
-.tagListItem:hover {
-  transform: scale(1.01);
-}
-
 .tagListItem:active {
   transform: scale(1);
+  transform: translateX(-8%);
+}
+
+.active {
+  transform: translateX(-8%);
 }
 
 .tagListItemCnt {

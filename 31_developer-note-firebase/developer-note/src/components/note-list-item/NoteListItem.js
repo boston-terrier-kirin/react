@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { BsLink45Deg, BsTrashFill } from 'react-icons/bs';
+import { BsLink45Deg, BsThreeDots, BsTrashFill } from 'react-icons/bs';
 
 import Tag from '../tag/Tag';
 import Favorite from '../favorite/Favorite';
@@ -27,14 +27,18 @@ const NoteListItem = ({ note, tagColorMap }) => {
 
   return (
     <li key={note.id} className={`${style.noteListItem}`}>
-      <a
-        className={`${style.link}`}
-        href={note.link}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <BsLink45Deg size={20} />
-      </a>
+      {note.link ? (
+        <a
+          className={`${style.link}`}
+          href={note.link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BsLink45Deg size={20} />
+        </a>
+      ) : (
+        <BsThreeDots size={20} />
+      )}
 
       <Favorite
         favorite={note.favorite}
