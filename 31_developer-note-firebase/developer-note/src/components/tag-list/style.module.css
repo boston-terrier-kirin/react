@@ -19,7 +19,6 @@
 }
 
 .tagListItem:active {
-  transform: scale(1);
   transform: translateX(-8%);
 }
 
@@ -44,6 +43,18 @@
   color: var(--color-primaryp-dark);
   background-color: #fff;
   border: 1px solid var(--color-primary);
+}
+
+.tagListItemAll:hover {
+  transform: scale(1.01);
+}
+
+.tagListItemAll:active {
+  transform: scale(1);
+}
+
+.active {
+  transform: translateX(-8%);
 }
 
 .tagListItemFavorite {
