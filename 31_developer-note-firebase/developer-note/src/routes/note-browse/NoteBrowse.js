@@ -160,10 +160,12 @@ const NoteBrowse = () => {
 
   const handleFilterNoteByTag = (tag) => {
     if (tag === '') {
+      // ALLがクリックされたら、初期状態に戻す。
       dispatch(noteActions.setSearchTag(''));
       dispatch(noteActions.setFilterTag(''));
       dispatch(noteActions.setFilterTitle(''));
     } else {
+      // タグがクリックされたら、タイトルの検索は初期状態に戻す。
       dispatch(noteActions.setFilterTag(tag));
       dispatch(noteActions.setFilterTitle(''));
     }
