@@ -13,11 +13,15 @@ const noteSlice = createSlice({
     isLoading: false,
     noteList: [],
     note: null,
-    filterTag: '',
+    filterNoteByTag: '',
+    searchTag: '',
   },
   reducers: {
     setFilterTag: (state, action) => {
-      state.filterTag = action.payload;
+      state.filterNoteByTag = action.payload;
+    },
+    setSearchTag: (state, action) => {
+      state.searchTag = action.payload;
     },
   },
   extraReducers: (builder) => {

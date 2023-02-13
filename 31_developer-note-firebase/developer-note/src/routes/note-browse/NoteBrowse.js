@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNoteList } from '../../store/note/noteThunk';
-import Spinner from '../../components/spinner/Spinner';
-import NoteList from '../../components/note-list/NoteList';
 import { Link } from 'react-router-dom';
-import TagList from '../../components/tag-list/TagList';
+import { BsSearch } from 'react-icons/bs';
+import { getNoteList } from '../../store/note/noteThunk';
 import { computeTagColor } from './computeTagColor';
 import { useAuthStatus } from '../../hooks/useAuthStatus';
 import { noteActions } from '../../store/note/noteSlice';
+import Spinner from '../../components/spinner/Spinner';
+import NoteList from '../../components/note-list/NoteList';
+import TagList from '../../components/tag-list/TagList';
+
+import style from './style.module.css';
 
 const TOP30_COLOR_MAP = {
   0: { backgroundColor: '#3b82f6', color: '#f9fafb' }, // Blue 500
@@ -89,17 +92,26 @@ const TOP30_COLOR_MAP = {
 const NoteBrowse = () => {
   const dispatch = useDispatch();
 
-  const { noteList, filterTag, isLoading } = useSelector((state) => state.note);
+  const { noteList, filterNoteByTag, searchTag, isLoading } = useSelector(
+    (state) => state.note
+  );
   const tagColorMap = computeTagColor(noteList, TOP30_COLOR_MAP, 30);
 
   const { loggedIn, checkingStatus } = useAuthStatus();
 
   const filteredNoteList = noteList.filter((note) => {
-    if (filterTag === 'FAVORITE') {
+    if (filterNoteByTag === 'FAVORITE') {
       return note.favorite;
     }
-    return note.tags?.toUpperCase().includes(filterTag.toUpperCase());
+    return note.tags?.toUpperCase().includes(filterNoteByTag.toUpperCase());
   });
+
+  const filteredTagColorMap = {};
+  for (const tag in tagColorMap) {
+    if (tag.toUpperCase().includes(searchTag.toUpperCase())) {
+      filteredTagColorMap[tag] = tagColorMap[tag];
+    }
+  }
 
   useEffect(() => {
     dispatch(getNoteList());
@@ -113,23 +125,39 @@ const NoteBrowse = () => {
     dispatch(noteActions.setFilterTag(tag));
   };
 
+  const handleSearchTag = (event) => {
+    dispatch(noteActions.setSearchTag(event.target.value));
+  };
+
   return (
     <>
-      {loggedIn && (
-        <div className="row mb-3">
-          <div className="text-end">
-            <Link to="/note/new" className="btn btn-primary">
-              New Note
-            </Link>
-          </div>
+      <div className="row mb-3 align-items-end">
+        <div className={`col-2 ${style.searchBox}`}>
+          <input
+            type="text"
+            className={style.searchTags}
+            placeholder="Search tags"
+            value={searchTag}
+            onChange={handleSearchTag}
+          />
+          <BsSearch className={style.icon} />
         </div>
-      )}
+        <div className="col-10">
+          {loggedIn && (
+            <div className="text-end">
+              <Link to="/note/new" className="btn btn-primary">
+                New Note
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
 
       <div className="row mb-3">
         <div className="col-2">
           <TagList
-            tagColorMap={tagColorMap}
-            activeTag={filterTag}
+            tagColorMap={filteredTagColorMap}
+            activeTag={filterNoteByTag}
             onClickTag={handleClickTag}
           />
         </div>

@@ -1,0 +1,38 @@
+.searchBox {
+  position: relative;
+}
+
+.searchTags {
+  border-radius: 5rem;
+  padding: 0.3rem 0.8rem;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--color-gray-400);
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+
+  transition: all 0.3s;
+}
+
+.searchTags:focus {
+  background-color: var(--color-gray-50);
+}
+
+.searchTags::placeholder {
+  color: var(--color-gray-400);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+  color: var(--color-gray-400);
+
+  transition: all 0.3s;
+}
+
+.searchTags:focus ~ .icon {
+  color: var(--color-gray-500);
+}
