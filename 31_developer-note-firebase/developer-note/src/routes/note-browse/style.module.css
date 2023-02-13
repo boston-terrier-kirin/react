@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.searchTags {
+.search {
   border-radius: 5rem;
   padding: 0.3rem 0.8rem;
   width: 100%;
@@ -15,24 +15,23 @@
   transition: all 0.3s;
 }
 
-.searchTags:focus {
+.search:focus {
   background-color: var(--color-gray-50);
 }
 
-.searchTags::placeholder {
+.search::placeholder {
   color: var(--color-gray-400);
 }
 
 .icon {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  right: 10%;
+  transform: translate(-150%, -50%);
   color: var(--color-gray-400);
 
   transition: all 0.3s;
 }
 
-.searchTags:focus ~ .icon {
+.search:focus ~ .icon {
   color: var(--color-gray-500);
 }

@@ -92,18 +92,51 @@ const TOP30_COLOR_MAP = {
 const NoteBrowse = () => {
   const dispatch = useDispatch();
 
-  const { noteList, filterNoteByTag, searchTag, isLoading } = useSelector(
-    (state) => state.note
-  );
+  const { noteList, searchTag, filterNoteByTag, filterNoteByTitle, isLoading } =
+    useSelector((state) => state.note);
   const tagColorMap = computeTagColor(noteList, TOP30_COLOR_MAP, 30);
 
   const { loggedIn, checkingStatus } = useAuthStatus();
 
   const filteredNoteList = noteList.filter((note) => {
+    let match = false;
+
     if (filterNoteByTag === 'FAVORITE') {
-      return note.favorite;
+      // (1) タグが多いので、まずはタグを検索する。
+      // (2) タグをクリックして、タグで絞り込む。
+      // (3) 絞り込んだタグの中で、タイトルで絞り込む。
+      match = note.favorite;
+
+      // favoriteで絞り込んだ後、さらにタイトルで絞り込む。
+      if (filterNoteByTitle) {
+        if (
+          note.title?.toUpperCase().includes(filterNoteByTitle.toUpperCase())
+        ) {
+          match = true;
+        } else {
+          match = false;
+        }
+      }
+
+      return match;
     }
-    return note.tags?.toUpperCase().includes(filterNoteByTag.toUpperCase());
+
+    if (note.tags?.toUpperCase().includes(filterNoteByTag.toUpperCase())) {
+      match = true;
+
+      // tagで絞り込んだ後、さらにタイトルで絞り込む。
+      if (filterNoteByTitle) {
+        if (
+          note.title?.toUpperCase().includes(filterNoteByTitle.toUpperCase())
+        ) {
+          match = true;
+        } else {
+          match = false;
+        }
+      }
+    }
+
+    return match;
   });
 
   const filteredTagColorMap = {};
@@ -121,12 +154,23 @@ const NoteBrowse = () => {
     return <Spinner />;
   }
 
-  const handleClickTag = (tag) => {
-    dispatch(noteActions.setFilterTag(tag));
-  };
-
   const handleSearchTag = (event) => {
     dispatch(noteActions.setSearchTag(event.target.value));
+  };
+
+  const handleFilterNoteByTag = (tag) => {
+    if (tag === '') {
+      dispatch(noteActions.setSearchTag(''));
+      dispatch(noteActions.setFilterTag(''));
+      dispatch(noteActions.setFilterTitle(''));
+    } else {
+      dispatch(noteActions.setFilterTag(tag));
+      dispatch(noteActions.setFilterTitle(''));
+    }
+  };
+
+  const handleFilterNoteByTitle = (event) => {
+    dispatch(noteActions.setFilterTitle(event.target.value));
   };
 
   return (
@@ -135,14 +179,25 @@ const NoteBrowse = () => {
         <div className={`col-2 ${style.searchBox}`}>
           <input
             type="text"
-            className={style.searchTags}
+            className={style.search}
             placeholder="Search tags"
             value={searchTag}
             onChange={handleSearchTag}
           />
           <BsSearch className={style.icon} />
         </div>
-        <div className="col-10">
+
+        <div className="col-10 d-flex gap-3 align-items-end">
+          <div className={`${style.searchBox} flex-grow-1`}>
+            <input
+              type="text"
+              className={style.search}
+              placeholder="Search titles"
+              value={filterNoteByTitle}
+              onChange={handleFilterNoteByTitle}
+            />
+            <BsSearch className={style.icon} />
+          </div>
           {loggedIn && (
             <div className="text-end">
               <Link to="/note/new" className="btn btn-primary">
@@ -158,7 +213,7 @@ const NoteBrowse = () => {
           <TagList
             tagColorMap={filteredTagColorMap}
             activeTag={filterNoteByTag}
-            onClickTag={handleClickTag}
+            onClickTag={handleFilterNoteByTag}
           />
         </div>
 

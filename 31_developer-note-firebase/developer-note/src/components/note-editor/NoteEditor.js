@@ -42,7 +42,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
         <div className="text-end mb-3">
           {loggedIn && (
             <button className="btn btn-primary me-2" onClick={handleSubmit}>
-              Submit
+              Save
             </button>
           )}
           {!isEditable && (
