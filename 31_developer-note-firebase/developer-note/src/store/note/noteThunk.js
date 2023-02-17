@@ -9,13 +9,14 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  orderBy,
 } from 'firebase/firestore';
 import { db } from '../../firebase.config';
 
 export const getNoteList = createAsyncThunk('note/getNoteList', async () => {
   try {
     const notesRef = collection(db, 'notes');
-    const q = query(notesRef);
+    const q = query(notesRef, orderBy('tags', 'asc'), orderBy('title', 'asc'));
     const querySnap = await getDocs(q);
 
     const notes = [];
