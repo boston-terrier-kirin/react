@@ -56,3 +56,27 @@ export function computeTagColor(noteList, colorMap, definedColors) {
 
   return tagColorMap;
 }
+
+export function filterTag(tagColorMap, searchTag) {
+  const filteredTagColorMap = {};
+
+  for (const tag in tagColorMap) {
+    if (tag.toUpperCase().includes(searchTag.toUpperCase())) {
+      filteredTagColorMap[tag] = tagColorMap[tag];
+    }
+  }
+
+  return filteredTagColorMap;
+}
+
+export function getFavoritesCnt(noteList) {
+  let cnt = 0;
+
+  for (const note of noteList) {
+    if (note.favorite) {
+      cnt++;
+    }
+  }
+
+  return cnt;
+}

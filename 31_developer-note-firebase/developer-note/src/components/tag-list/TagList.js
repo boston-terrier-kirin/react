@@ -1,7 +1,12 @@
-import { BsSuitHeartFill } from 'react-icons/bs';
 import style from './style.module.css';
 
-const TagList = ({ tagColorMap, activeTag, onClickTag }) => {
+const TagList = ({
+  tagColorMap,
+  activeTag,
+  allCnt,
+  favoritesCnt,
+  onClickTag,
+}) => {
   const tagsToRender = [];
   for (const tag in tagColorMap) {
     const attr = tagColorMap[tag];
@@ -34,14 +39,19 @@ const TagList = ({ tagColorMap, activeTag, onClickTag }) => {
         onClick={() => onClickTag('')}
       >
         ALL
+        <span className={`${style.tagListItemCnt} ${style.all}`}>{allCnt}</span>
       </li>
+
       <li
         className={`tag ${style.tagListItem} ${style.tagListItemFavorite} ${
           activeTag === 'FAVORITE' && style.active
         }`}
         onClick={() => onClickTag('FAVORITE')}
       >
-        Favorite <BsSuitHeartFill size={18} className={style.favorite} />
+        Favorite
+        <span className={`${style.tagListItemCnt} ${style.favorite}`}>
+          {favoritesCnt}
+        </span>
       </li>
       {tagsToRender}
     </ul>

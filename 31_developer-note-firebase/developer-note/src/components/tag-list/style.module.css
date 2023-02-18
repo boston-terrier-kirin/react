@@ -30,7 +30,7 @@
   font-size: 12px;
   color: var(--color-gray-50);
   background-color: var(--color-primary-dark);
-  width: 25px;
+  width: 30px;
   height: 20px;
   border-radius: 5rem;
 
@@ -40,7 +40,7 @@
 }
 
 .tagListItemAll {
-  color: var(--color-primaryp-dark);
+  color: var(--color-primary-dark);
   background-color: #fff;
   border: 1px solid var(--color-primary);
 }
@@ -58,17 +58,15 @@
 }
 
 .tagListItemFavorite {
-  color: var(--color-primaryp-dark);
+  color: var(--color-primary-dark);
   background-color: #fff;
   border: 1px solid var(--color-primary-pink);
 }
 
-.favorite {
-  color: var(--color-primary-pink);
-  cursor: pointer;
-  transition: all 0.3s;
+.all {
+  background-color: var(--color-primary);
 }
 
-.favorite:hover {
-  transform: scale(0.95);
+.favorite {
+  background-color: var(--color-pink-400);
 }

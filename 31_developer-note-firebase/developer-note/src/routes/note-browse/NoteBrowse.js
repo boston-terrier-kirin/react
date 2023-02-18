@@ -9,18 +9,17 @@ import NoteList from '../../components/note-list/NoteList';
 import TagList from '../../components/tag-list/TagList';
 import SearchBox from '../../components/search-box/SearchBox';
 
-import { computeTagColor } from './computeTagColor';
+import { computeTagColor, filterTag, getFavoritesCnt } from './computeTag';
 import { TOP30_COLOR_MAP } from './colorMap';
 import { filterNote } from './filterNote';
 
 const NoteBrowse = () => {
   const dispatch = useDispatch();
 
+  const { loggedIn, checkingStatus } = useAuthStatus();
+
   const { noteList, searchTag, filterNoteByTag, filterNoteByTitle, isLoading } =
     useSelector((state) => state.note);
-  const tagColorMap = computeTagColor(noteList, TOP30_COLOR_MAP, 30);
-
-  const { loggedIn, checkingStatus } = useAuthStatus();
 
   const filteredNoteList = filterNote(
     noteList,
@@ -28,12 +27,13 @@ const NoteBrowse = () => {
     filterNoteByTitle
   );
 
-  const filteredTagColorMap = {};
-  for (const tag in tagColorMap) {
-    if (tag.toUpperCase().includes(searchTag.toUpperCase())) {
-      filteredTagColorMap[tag] = tagColorMap[tag];
-    }
-  }
+  // 全カラーマップ
+  const tagColorMap = computeTagColor(noteList, TOP30_COLOR_MAP, 30);
+
+  // 左側に表示するタグ用
+  const filteredTagColorMap = filterTag(tagColorMap, searchTag);
+
+  const favoritesCnt = getFavoritesCnt(noteList);
 
   useEffect(() => {
     dispatch(getNoteList());
@@ -100,6 +100,8 @@ const NoteBrowse = () => {
             tagColorMap={filteredTagColorMap}
             activeTag={filterNoteByTag}
             onClickTag={handleFilterNoteByTag}
+            allCnt={noteList.length}
+            favoritesCnt={favoritesCnt}
           />
         </div>
 
