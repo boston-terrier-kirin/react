@@ -22,7 +22,22 @@ const DateInput: FC<IDateInput> = (props): ReactElement => {
           value={value}
           disabled={disabled}
           onChange={onChange}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              sx={{
+                '.MuiInputBase-input': {
+                  padding: '8.5px 14px',
+                },
+                '.MuiInputLabel-formControl': {
+                  top: '-8.5px',
+                },
+                '.MuiInputLabel-shrink': {
+                  top: '0',
+                },
+              }}
+            />
+          )}
         />
       </LocalizationProvider>
     </>
