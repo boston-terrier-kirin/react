@@ -17,7 +17,7 @@ const TaskDateField: FC<IDateField> = (props): ReactElement => {
           value={value}
           disabled={disabled}
           onChange={onChange}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <TextField {...params} size="small" />}
         />
       </LocalizationProvider>
     </>

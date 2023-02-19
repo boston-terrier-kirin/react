@@ -35,3 +35,20 @@ sx を使って、力業で微調整は可能。
   />
 </LocalizationProvider>
 ```
+
+## もっと簡単にできることが判明
+
+TextField の size を small にすれば OK。
+
+```typescript
+<LocalizationProvider dateAdapter={AdapterDateFns}>
+  <DesktopDatePicker
+    label="Task Date"
+    inputFormat="yyyy/MM/dd"
+    value={value}
+    disabled={disabled}
+    onChange={onChange}
+    renderInput={(params) => <TextField {...params} size="small" />}
+  />
+</LocalizationProvider>
+```
