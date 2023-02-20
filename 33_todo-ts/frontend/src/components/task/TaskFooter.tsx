@@ -3,6 +3,9 @@ import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import { ITaskFooter } from './interfaces/ITaskFooter';
 
 const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
+  const { onChange = (e) => console.log(e), onClick = (e) => console.log(e) } =
+    props;
+
   return (
     <Box
       display="flex"
@@ -12,7 +15,7 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
     >
       <FormControlLabel
         label="In Progress"
-        control={<Switch color="warning" />}
+        control={<Switch color="warning" onChange={onChange} />}
       ></FormControlLabel>
 
       <Button
@@ -20,6 +23,7 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
         color="success"
         size="small"
         sx={{ color: '#fff' }}
+        onClick={onClick}
       >
         Mark Complete
       </Button>

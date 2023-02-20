@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 type ShoppingItemFormProps = {
   onAddItem: (product: string, qty: number) => void;
@@ -10,7 +10,7 @@ const ShoppingItemForm = ({
   const [product, setProduct] = useState<string>('');
   const [qty, setQty] = useState<string>('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
     if (qty) {
