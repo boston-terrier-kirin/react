@@ -4,12 +4,14 @@ import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import { Status } from './enums/Status';
 import DateInput from './DateInput';
+import SwitchInput from './SwitchInput';
 
 const Inputs: FC = (): ReactElement => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('');
   const [date, setDate] = useState<Date | null>(null);
+  const [status, setStatus] = useState('');
+  const [agree, setAgree] = useState(false);
 
   console.log(username);
 
@@ -57,6 +59,13 @@ const Inputs: FC = (): ReactElement => {
           ]}
           value={status}
           onChange={(e) => setStatus(e.target.value)}
+        />
+
+        <SwitchInput
+          label="Agree"
+          name="agree"
+          value={agree}
+          onChange={(e) => setAgree(e.target.checked)}
         />
       </Stack>
     </Box>
