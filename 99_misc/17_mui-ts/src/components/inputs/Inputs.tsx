@@ -1,5 +1,5 @@
 import { FC, ReactElement, useState } from 'react';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import { Status } from './enums/Status';
@@ -65,6 +65,15 @@ const Inputs: FC = (): ReactElement => {
           value={agree}
           onChange={(e) => setAgree(e.target.checked)}
         />
+
+        <Button
+          variant="contained"
+          color="success"
+          size="small"
+          sx={{ color: '#fff' }}
+        >
+          Click
+        </Button>
       </Stack>
     </Box>
   );
