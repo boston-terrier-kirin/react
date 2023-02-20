@@ -15,6 +15,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
   });
 
   const [favorite, setFavorite] = useState(note?.favorite || false);
+  const [draft, setDraft] = useState(note?.draft || false);
   const [content, setContent] = useState(note?.content || '');
   const [isEditable, setIsEditable] = useState(defaultEditable);
 
@@ -29,7 +30,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ ...formData, content, favorite });
+    onSubmit({ ...formData, content, favorite, draft });
   };
 
   if (checkingStatus) {
@@ -38,13 +39,9 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="text-end mb-3">
-          {loggedIn && (
-            <button className="btn btn-primary me-2" onClick={handleSubmit}>
-              Save
-            </button>
-          )}
+          {loggedIn && <button className="btn btn-primary me-2">Save</button>}
           {!isEditable && (
             <button className="btn btn-secondary" onClick={onCancel}>
               Back
@@ -61,6 +58,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
               className="form-control"
               value={formData.title}
               onChange={handleChange}
+              required
             />
           </div>
           <div className={`${style.item} flex-grow-1`}>
@@ -71,6 +69,7 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
               className="form-control"
               value={formData.tags}
               onChange={handleChange}
+              required
             />
           </div>
           <div className={`${style.item}`}>
@@ -83,6 +82,19 @@ const NoteEditor = ({ note, onSubmit, onCancel, defaultEditable }) => {
                 name="favorite"
                 checked={favorite}
                 onChange={() => setFavorite((prev) => !prev)}
+              />
+            </div>
+          </div>
+          <div className={`${style.item}`}>
+            <label>Draft</label>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="draft"
+                name="draft"
+                checked={draft}
+                onChange={() => setDraft((prev) => !prev)}
               />
             </div>
           </div>

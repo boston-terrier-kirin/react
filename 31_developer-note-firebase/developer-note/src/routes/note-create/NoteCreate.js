@@ -10,7 +10,7 @@ const NoteCreate = () => {
 
   const handleSubmit = (data) => {
     dispatch(createNote(data));
-    showSuccessMessage('Note Created');
+    showSuccessMessage('Note Saved Successfully');
     navigate('/');
   };
 

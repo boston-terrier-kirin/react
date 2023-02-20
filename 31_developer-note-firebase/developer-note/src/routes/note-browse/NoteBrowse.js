@@ -9,7 +9,12 @@ import NoteList from '../../components/note-list/NoteList';
 import TagList from '../../components/tag-list/TagList';
 import SearchBox from '../../components/search-box/SearchBox';
 
-import { computeTagColor, filterTag, getFavoritesCnt } from './computeTag';
+import {
+  computeTagColor,
+  filterTag,
+  getDraftCnt,
+  getFavoritesCnt,
+} from './computeTag';
 import { TOP30_COLOR_MAP } from './colorMap';
 import { filterNote } from './filterNote';
 
@@ -34,6 +39,7 @@ const NoteBrowse = () => {
   const filteredTagColorMap = filterTag(tagColorMap, searchTag);
 
   const favoritesCnt = getFavoritesCnt(noteList);
+  const draftCnt = getDraftCnt(noteList);
 
   useEffect(() => {
     dispatch(getNoteList());
@@ -102,6 +108,7 @@ const NoteBrowse = () => {
             onClickTag={handleFilterNoteByTag}
             allCnt={noteList.length}
             favoritesCnt={favoritesCnt}
+            draftCnt={draftCnt}
           />
         </div>
 

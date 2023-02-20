@@ -22,7 +22,7 @@ const Note = () => {
 
   const handleSubmit = (data) => {
     dispatch(updateNote(data));
-    showSuccessMessage('Note Updated');
+    showSuccessMessage('Note Saved Successfully');
     navigate('/');
   };
 

@@ -63,10 +63,20 @@
   border: 1px solid var(--color-primary-pink);
 }
 
+.tagListItemDraft {
+  color: var(--color-primary-dark);
+  background-color: #fff;
+  border: 1px solid var(--color-primary-dark);
+}
+
 .all {
   background-color: var(--color-primary);
 }
 
 .favorite {
   background-color: var(--color-pink-400);
+}
+
+.draft {
+  background-color: var(--color-primary-dark);
 }

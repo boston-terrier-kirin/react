@@ -80,3 +80,15 @@ export function getFavoritesCnt(noteList) {
 
   return cnt;
 }
+
+export function getDraftCnt(noteList) {
+  let cnt = 0;
+
+  for (const note of noteList) {
+    if (note.draft) {
+      cnt++;
+    }
+  }
+
+  return cnt;
+}

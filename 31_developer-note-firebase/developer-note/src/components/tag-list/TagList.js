@@ -5,6 +5,7 @@ const TagList = ({
   activeTag,
   allCnt,
   favoritesCnt,
+  draftCnt,
   onClickTag,
 }) => {
   const tagsToRender = [];
@@ -51,6 +52,18 @@ const TagList = ({
         Favorite
         <span className={`${style.tagListItemCnt} ${style.favorite}`}>
           {favoritesCnt}
+        </span>
+      </li>
+
+      <li
+        className={`tag ${style.tagListItem} ${style.tagListItemDraft} ${
+          activeTag === 'DRAFT' && style.active
+        }`}
+        onClick={() => onClickTag('DRAFT')}
+      >
+        Draft
+        <span className={`${style.tagListItemCnt} ${style.draft}`}>
+          {draftCnt}
         </span>
       </li>
       {tagsToRender}
