@@ -21,8 +21,6 @@ const Inputs: FC = (): ReactElement => {
       flexDirection="column"
       alignItems="flex-start"
       width="100%"
-      px={4}
-      my={6}
     >
       <Typography mb={2} component="h2" variant="h6">
         Login
