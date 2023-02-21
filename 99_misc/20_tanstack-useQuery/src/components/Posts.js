@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { getPosts } from '../api/postApi';
 
 const Posts = () => {
+  // https://tanstack.com/query/v4/docs/react/reference/useQuery
   const postQuery = useQuery({
     queryKey: ['posts'],
     queryFn: () => getPosts(),
-    staleTime: 3000, // cacheの有効期限っぽい
+    staleTime: 3000,
   });
 
   console.log(
