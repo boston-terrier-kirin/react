@@ -7,6 +7,7 @@ class Task {
   }
 }
 
+// plainToInstance
 {
   const plainTasks = [
     {
@@ -29,6 +30,7 @@ class Task {
   console.log('-----');
 }
 
+// instanceToPlain
 {
   const tasks = [];
   const task1 = new Task(1, 'テスト1');
