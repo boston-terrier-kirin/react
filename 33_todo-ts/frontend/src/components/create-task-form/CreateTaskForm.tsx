@@ -1,4 +1,5 @@
-import { FC, ReactElement, useState } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import {
   Alert,
   AlertTitle,
@@ -8,12 +9,14 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { sendApiRequest } from '../../helpers/sendApiRequest';
+import { Status } from './enums/Status';
+import { Priority } from './enums/Priority';
 import TaskTitleField from './TaskTitleField';
 import TaskDescription from './TaskDescription';
 import TaskDateField from './TaskDateField';
 import TaskSelectField from './TaskSelectField';
-import { Status } from './enums/Status';
-import { Priority } from './enums/Priority';
+import { ICreateTask } from '../task-area/interfaces/ICreateTask';
 
 const CreateTaskForm: FC = (): ReactElement => {
   const [title, setTitle] = useState<string>('');
@@ -21,6 +24,42 @@ const CreateTaskForm: FC = (): ReactElement => {
   const [date, setDate] = useState<Date | null>(new Date());
   const [status, setStatus] = useState<string>(Status.todo);
   const [priority, setPriority] = useState<string>(Priority.normal);
+
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+  const createTaskMutation = useMutation((data: ICreateTask) => {
+    return sendApiRequest('http://localhost:3200/tasks', 'POST', data);
+  });
+
+  useEffect(() => {
+    if (createTaskMutation.isSuccess) {
+      setShowSuccess(true);
+    }
+
+    const successTimeout = setTimeout(() => {
+      setShowSuccess(false);
+    }, 7000);
+
+    return () => {
+      clearTimeout(successTimeout);
+    };
+  }, [createTaskMutation.isSuccess]);
+
+  const handleSubmit = () => {
+    if (!title || !date || !description) {
+      return;
+    }
+
+    const task: ICreateTask = {
+      title,
+      description,
+      date: date.toString(),
+      status,
+      priority,
+    };
+
+    createTaskMutation.mutate(task);
+  };
 
   return (
     <Box
@@ -31,10 +70,12 @@ const CreateTaskForm: FC = (): ReactElement => {
       px={4}
       my={6}
     >
-      <Alert severity="success" sx={{ width: '100%', marginBottom: '16px' }}>
-        <AlertTitle>Success</AlertTitle>
-        Task created successfully
-      </Alert>
+      {showSuccess && (
+        <Alert severity="success" sx={{ width: '100%', marginBottom: '16px' }}>
+          <AlertTitle>Success</AlertTitle>
+          Task created successfully
+        </Alert>
+      )}
 
       <Typography mb={2} component="h2" variant="h6">
         Create a Task
@@ -80,8 +121,14 @@ const CreateTaskForm: FC = (): ReactElement => {
           />
         </Stack>
 
-        <LinearProgress />
-        <Button variant="contained" size="large" fullWidth>
+        {createTaskMutation.isLoading && <LinearProgress />}
+
+        <Button
+          variant="contained"
+          size="large"
+          fullWidth
+          onClick={handleSubmit}
+        >
           Create a Task
         </Button>
       </Stack>
