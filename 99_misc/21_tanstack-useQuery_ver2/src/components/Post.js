@@ -8,7 +8,7 @@ async function fetchComments(postId) {
   return response.json();
 }
 
-export function PostDetail({ post }) {
+export function Post({ post }) {
   // クエリキーにidを入れているのがポイント
   // idを入れないと初回しかfetchしてくれない。
   const { data, isLoading, isError } = useQuery({

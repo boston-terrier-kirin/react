@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-import { PostDetail } from './PostDetail';
+import { Post } from './Post';
 
 async function fetchPosts() {
   console.log('★Posts.fetchPosts');
@@ -11,6 +11,9 @@ async function fetchPosts() {
   return response.json();
 }
 
+// PostsとPostは親子関係になっていて、画面遷移(unmount)しない。
+// posts: slateTimeはないが、unmountしないので、初回のみfetchする。
+// comments: キャッシュキーにIDを指定しているので、毎回fetchする。
 export function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -51,7 +54,7 @@ export function Posts() {
         ))}
       </ul>
       <hr />
-      {selectedPost && <PostDetail post={selectedPost} />}
+      {selectedPost && <Post post={selectedPost} />}
     </>
   );
 }
