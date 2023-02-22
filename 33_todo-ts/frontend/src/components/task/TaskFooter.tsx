@@ -1,10 +1,26 @@
+import { ChangeEvent, MouseEvent } from 'react';
 import { FC, ReactElement } from 'react';
 import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import { ITaskFooter } from './interfaces/ITaskFooter';
+import { Status } from '../create-task-form/enums/Status';
 
 const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
-  const { onChange = (e) => console.log(e), onClick = (e) => console.log(e) } =
-    props;
+  const {
+    id,
+    status,
+    onStatusChange = (e, id) => console.log(e),
+    onMarkComplete = (e, id) => console.log(e),
+  } = props;
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onStatusChange(event, id);
+  };
+
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLAnchorElement>
+  ) => {
+    onMarkComplete(event, id);
+  };
 
   return (
     <Box
@@ -15,7 +31,13 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
     >
       <FormControlLabel
         label="In Progress"
-        control={<Switch color="warning" onChange={onChange} />}
+        control={
+          <Switch
+            color="warning"
+            onChange={handleChange}
+            defaultChecked={status === Status.inProgress}
+          />
+        }
       ></FormControlLabel>
 
       <Button
@@ -23,7 +45,7 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
         color="success"
         size="small"
         sx={{ color: '#fff' }}
-        onClick={onClick}
+        onClick={handleClick}
       >
         Mark Complete
       </Button>

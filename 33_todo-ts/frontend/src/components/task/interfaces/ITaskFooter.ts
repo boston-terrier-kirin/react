@@ -1,9 +1,14 @@
 import { ChangeEvent, MouseEvent } from 'react';
 
 export interface ITaskFooter {
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  id: string;
 
-  onClick?: (
-    event: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLAnchorElement>
+  status?: string;
+
+  onStatusChange?: (event: ChangeEvent<HTMLInputElement>, id: string) => void;
+
+  onMarkComplete?: (
+    event: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLAnchorElement>,
+    id: string
   ) => void;
 }

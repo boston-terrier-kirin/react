@@ -10,13 +10,14 @@ import { Status } from '../create-task-form/enums/Status';
 
 const Task: FC<ITask> = (props): ReactElement => {
   const {
+    id,
     title,
     date,
     description,
     priority = Priority.high,
     status = Status.todo,
-    onChange,
-    onClick,
+    onStatusChange,
+    onMarkComplete,
   } = props;
 
   return (
@@ -36,7 +37,12 @@ const Task: FC<ITask> = (props): ReactElement => {
     >
       <TaskHeader title={title} date={date} />
       <TaskDescription description={description} />
-      <TaskFooter onChange={onChange} onClick={onClick} />
+      <TaskFooter
+        id={id}
+        status={status}
+        onStatusChange={onStatusChange}
+        onMarkComplete={onMarkComplete}
+      />
     </Box>
   );
 };
