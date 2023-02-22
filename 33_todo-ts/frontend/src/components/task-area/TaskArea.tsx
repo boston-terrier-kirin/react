@@ -1,5 +1,5 @@
 import { FC, ReactElement, ReactNode, ChangeEvent, MouseEvent } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Grid, Box, Alert, LinearProgress } from '@mui/material';
 import { format } from 'date-fns';
 import { sendApiRequest } from '../../helpers/sendApiRequest';
@@ -8,21 +8,29 @@ import Task from '../task/Task';
 import { ITaskApi } from './interfaces/ITaskApi';
 import { Status } from '../create-task-form/enums/Status';
 import { IUpdateTask } from './interfaces/IUpdateTask';
+import { countTasks } from './helpers/countTasks';
 
 const TaskArea: FC = (): ReactElement => {
-  const { data, isLoading, isError, refetch } = useQuery(
-    ['tasks'],
-    async () => {
+  const queryClient = useQueryClient();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['tasks'],
+    queryFn: async () => {
       return await sendApiRequest<ITaskApi[]>(
         'http://localhost:3200/tasks',
         'GET'
       );
-    }
-  );
+    },
+  });
 
-  const updateTaskMutation = useMutation((data: IUpdateTask) =>
-    sendApiRequest('http://localhost:3200/tasks', 'PUT', data)
-  );
+  const updateTaskMutation = useMutation({
+    mutationFn: (data: IUpdateTask) => {
+      return sendApiRequest('http://localhost:3200/tasks', 'PUT', data);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries(['tasks']);
+    },
+  });
 
   const onStatusChange = (event: ChangeEvent<HTMLInputElement>, id: string) => {
     const checked = event.target.checked;
@@ -56,6 +64,10 @@ const TaskArea: FC = (): ReactElement => {
   } else if (isLoading) {
     loadingStatus = <LinearProgress />;
   }
+
+  const todoCnt = countTasks(data, Status.todo);
+  const inProgressCnt = countTasks(data, Status.inProgress);
+  const completedCnt = countTasks(data, Status.completed);
 
   const tasksToRender = data
     ?.filter(
@@ -92,9 +104,9 @@ const TaskArea: FC = (): ReactElement => {
           xs={12}
           mb={8}
         >
-          <TaskCounter />
-          <TaskCounter />
-          <TaskCounter />
+          <TaskCounter status={Status.todo} count={todoCnt} />
+          <TaskCounter status={Status.inProgress} count={inProgressCnt} />
+          <TaskCounter status={Status.completed} count={completedCnt} />
         </Grid>
 
         <Grid item display="flex" flexDirection="column" xs={10} md={8}>

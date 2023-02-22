@@ -1,5 +1,5 @@
 import { FC, ReactElement, useEffect, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Alert,
   AlertTitle,
@@ -19,6 +19,8 @@ import TaskSelectField from './TaskSelectField';
 import { ICreateTask } from '../task-area/interfaces/ICreateTask';
 
 const CreateTaskForm: FC = (): ReactElement => {
+  const queryClient = useQueryClient();
+
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [date, setDate] = useState<Date | null>(new Date());
@@ -27,8 +29,13 @@ const CreateTaskForm: FC = (): ReactElement => {
 
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
-  const createTaskMutation = useMutation((data: ICreateTask) => {
-    return sendApiRequest('http://localhost:3200/tasks', 'POST', data);
+  const createTaskMutation = useMutation({
+    mutationFn: (data: ICreateTask) => {
+      return sendApiRequest('http://localhost:3200/tasks', 'POST', data);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries(['tasks']);
+    },
   });
 
   useEffect(() => {
