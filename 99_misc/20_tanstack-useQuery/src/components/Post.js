@@ -10,19 +10,21 @@ const Post = () => {
 
   const postQuery = useQuery({
     queryKey: ['posts', id],
-    queryFn: () => getPost(id),
-    staleTime: 3000,
+    queryFn: () => {
+      console.log('★Post.getPost');
+      return getPost(id);
+    },
+    staleTime: 300000,
   });
 
   const userQuery = useQuery({
     queryKey: ['users', postQuery?.data?.userId],
     enabled: postQuery?.data?.userId != null, // postQueryが終わったら有効になる。
-    queryFn: () => getUser(postQuery?.data?.userId),
-    staleTime: 3000,
+    queryFn: () => {
+      console.log('★Post.getUser');
+      return getUser(postQuery?.data?.userId);
+    },
   });
-
-  console.log('postQuery', postQuery.data);
-  console.log('userQuery', userQuery.data);
 
   if (postQuery.isLoading) {
     return <h1>Loading</h1>;

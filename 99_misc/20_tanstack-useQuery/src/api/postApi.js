@@ -18,3 +18,10 @@ export async function getUser(userId) {
   );
   return res.data;
 }
+
+export async function getComments(id) {
+  const res = await axios.get(
+    `https://jsonplaceholder.typicode.com/comments/${id}`
+  );
+  return res.data;
+}
