@@ -11,7 +11,7 @@ const Inputs: FC = (): ReactElement => {
   const [email, setEmail] = useState('');
   const [date, setDate] = useState<Date | null>(null);
   const [status, setStatus] = useState('');
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = useState(true);
 
   console.log(username);
 

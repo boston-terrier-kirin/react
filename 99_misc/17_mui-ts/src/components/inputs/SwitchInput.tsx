@@ -6,7 +6,7 @@ const SwitchInput: FC<ISwitchInput> = (props): ReactElement => {
   const {
     name = '',
     label = '',
-    value = '',
+    value = true,
     color = undefined,
     onChange = (e) => console.log(e),
     disabled = false,
@@ -20,7 +20,7 @@ const SwitchInput: FC<ISwitchInput> = (props): ReactElement => {
           id={`${name}-id`}
           name={name}
           color={color}
-          value={value}
+          checked={value}
           onChange={onChange}
           disabled={disabled}
         />
