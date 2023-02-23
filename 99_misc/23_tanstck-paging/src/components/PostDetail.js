@@ -16,8 +16,6 @@ export function PostDetail({ post }) {
     queryFn: () => fetchComments(post.id),
   });
 
-  console.log('PostDetail.rerender');
-
   if (isLoading) {
     return (
       <div>
